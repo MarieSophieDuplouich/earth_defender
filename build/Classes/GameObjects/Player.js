@@ -13,8 +13,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import { GameObject } from "./GameObject.js";
 import { Assets } from "../Assets.js";
+import { GameObject } from "./GameObject.js";
 var Player = /** @class */ (function (_super) {
     __extends(Player, _super);
     function Player() {
@@ -22,11 +22,15 @@ var Player = /** @class */ (function (_super) {
     }
     Player.prototype.start = function () {
         this.setImage(Assets.getPlayerImage());
-        // Codez ici ...
+        this.getPosition({
+            x: this.getGame().CANVAS_WIDTH / 2,
+            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 10
+        });
     };
     return Player;
 }(GameObject));
 export { Player };
+//exercice 6 dessiner le joueur
 // Astuce : Souvenez-vous que l'origine (0,0) 
 // du canvas est en haut à gauche. 
 // Et que le center horinzontal est à CANVAS_WIDTH/2.

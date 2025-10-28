@@ -1,18 +1,20 @@
-import { GameObject } from "./GameObject.js";
 import { Assets } from "../Assets.js";
+import { GameObject } from "./GameObject.js";
 
-export class Player extends GameObject{
-
+export class Player extends GameObject {
     protected start(): void {
         this.setImage(Assets.getPlayerImage());
-        // Codez ici ...
-        
+        this.getPosition({
+            x: this.getGame().CANVAS_WIDTH / 2,
+            y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 10
+        });
+
     }
 
 
-
-    
 }
+
+//exercice 6 dessiner le joueur
 // Astuce : Souvenez-vous que l'origine (0,0) 
 // du canvas est en haut à gauche. 
 // Et que le center horinzontal est à CANVAS_WIDTH/2.

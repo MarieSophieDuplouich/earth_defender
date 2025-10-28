@@ -1,4 +1,5 @@
 import { GameObject } from "./GameObjects/GameObject.js";
+import { Player } from "./GameObjects/Player.js";
 var Game = /** @class */ (function () {
     function Game() {
         this.CANVAS_WIDTH = 900;
@@ -10,6 +11,7 @@ var Game = /** @class */ (function () {
         this.context = canvas.getContext("2d");
     }
     Game.prototype.start = function () {
+        this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         console.log("coucou");
@@ -18,6 +20,12 @@ var Game = /** @class */ (function () {
         // Je le dessine
         this.draw(gameObject);
         this.loop();
+        // J'instancie le Player avec new Player(this)
+        // codez ici...
+        // Je le dessine avec this.draw
+        // codez ici...
+        this.player = new Player(this);
+        this.draw(player);
     };
     //  La fonction draw qui affiche un gameObject//ici ça ne va pas 
     Game.prototype.draw = function (gameObject) {

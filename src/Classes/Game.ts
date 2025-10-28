@@ -1,4 +1,5 @@
 import { GameObject } from "./GameObjects/GameObject.js";
+import { Player } from "./GameObjects/Player.js";
 
 export class Game {
 
@@ -14,8 +15,9 @@ export class Game {
         this.context = canvas.getContext("2d");
 
     }
-
+    private player : Player;
     public start(): void {
+        this.context.clearRect(0,0,this.CANVAS_WIDTH,this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         console.log("coucou");
@@ -25,9 +27,19 @@ export class Game {
         // Je le dessine
         this.draw(gameObject);
         this.loop();
+
+
+         // J'instancie le Player avec new Player(this)
+    // codez ici...
+
+    // Je le dessine avec this.draw
+    // codez ici...
+    this.player =  new Player(this);
+    this.draw(player);
+
     }
 
-    
+
 
     //  La fonction draw qui affiche un gameObject//ici ça ne va pas 
     private draw(gameObject: GameObject) {
