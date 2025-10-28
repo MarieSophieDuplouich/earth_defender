@@ -21,12 +21,13 @@ export class Game {
         console.log("coucou");
 
         // J'instancie un GameObject
-        const gameObject = new GameObject();
+        const gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
         this.loop();
     }
 
+    
 
     //  La fonction draw qui affiche un gameObject//ici ça ne va pas 
     private draw(gameObject: GameObject) {

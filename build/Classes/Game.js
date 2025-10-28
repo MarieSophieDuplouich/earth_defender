@@ -14,7 +14,7 @@ var Game = /** @class */ (function () {
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         console.log("coucou");
         // J'instancie un GameObject
-        var gameObject = new GameObject();
+        var gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
         this.loop();

@@ -25,30 +25,30 @@
 
 // La méthode Game.draw() prend en paramètre un GameObject et le dessine dans la balise canvas avec la méthode this.context.drawImage() :
 
+
 import { Position } from "../Position.js";
+import { Game } from "../Game.js";
 import { Assets } from "../Assets.js";
 
 export class GameObject {
 
     private position: Position;
     private image: HTMLImageElement;
+    private game: Game;
 
-    constructor() {
+    constructor(game: Game) {
         this.position = {
             x: 0,
             y: 0
         };
         this.image = Assets.getDefaultImage();
-
+        this.game = game;
 
         this.position = {
             x: 100,
             y: 50
         };
         this.image = Assets.getPlayerImage();
-
-
-
 
     }
     // Getter d'image et de position
@@ -65,17 +65,20 @@ export class GameObject {
     public getPlayer(): HTMLImageElement {
         return this.image;
     }
-
-
-
-
+// Et ajoutez un getter public pour que les GameObjects puissent accéder au Game. j'ai compris qu'il falalit mettre getGame dans ce fichier pas dans 
+//Game.ts
+public getGame() : Game{
+    return this.game;
 }
 
+    public setImage(image : HTMLImageElement){
+        this.image = image;
+    }
+    public setPosition(position : Position){
+        this.position = position;
+    }
 
-
-
-
-
+}
 
 
 
