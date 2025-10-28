@@ -25,6 +25,13 @@ var Assets = /** @class */ (function () {
         }
         return image;
     };
+    // ++
+    Assets.getAlienImage = function () {
+        var image = document.querySelector("img#asset_alien");
+        if (image == null)
+            throw Error("No alien asset found");
+        return image;
+    };
     return Assets;
 }());
 export { Assets };

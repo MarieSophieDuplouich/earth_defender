@@ -20,16 +20,13 @@ var Game = /** @class */ (function () {
         var gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
-        // this.loop();
+        this.loop();
         // J'instancie le Player avec new Player(this)
-        // codez ici...
         // Je le dessine avec this.draw
-        // codez ici...
         this.player = new Player(this);
         this.draw(this.player);
         // Écoute les inputs
-        this.
-            Input.listen();
+        Input.listen();
         // Démarre la boucle de jeu
         this.loop();
     };
