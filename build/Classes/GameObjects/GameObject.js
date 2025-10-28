@@ -1,6 +1,5 @@
 // Créer un GameObject
 // En POO tout doit être une classe. Chaque classe a sa propre responsabilité. Game s'occupe de l'affichage correct du jeu et de ses éléments. La classe GameObject quant à elle s'occupe d'un GameObject : sa position, son image, sa vie.
-import { Game } from "../Game.js";
 import { Assets } from "../Assets.js";
 var GameObject = /** @class */ (function () {
     function GameObject(game) {
@@ -8,13 +7,10 @@ var GameObject = /** @class */ (function () {
             x: 0,
             y: 0
         };
+        this.image = Assets.getPlayerImage();
         this.image = Assets.getDefaultImage();
         this.game = game;
-        this.position = {
-            x: 100,
-            y: 50
-        };
-        this.image = Assets.getPlayerImage();
+        this.start();
     }
     // Getter d'image et de position
     GameObject.prototype.getImage = function () {
@@ -43,22 +39,6 @@ var GameObject = /** @class */ (function () {
     return GameObject;
 }());
 export { GameObject };
-////
-Appelez;
-ensuite;
-cette;
-méthode;
-dans;
-le;
-constructeur.
-    constructor(game, Game);
-{
-    this.position = {
-        x: 0,
-        y: 0
-    };
-    this.image = Assets.getDefaultImage();
-    this.game = game;
-    // J'appelle start
-    this.start();
-}
+// Laissez la méthode start vide, car ce sera à une classe fille comme Player, Alien ou Laser de la remplir avec les actions qu'elles voudront effectuer.
+// Dans le cas de Player, il veut définir sa propre image et sa position en bas au centre de l'écran.
+// Implémentez donc la méthode start dans Player.

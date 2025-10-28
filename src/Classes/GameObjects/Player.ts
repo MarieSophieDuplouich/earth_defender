@@ -25,3 +25,9 @@ export class Player extends GameObject{
 // Les méthodes protected sont accessibles uniquement depuis la classe mère et ses enfants.
 
 // Dans la classe GameObject, ajoutez une méthode protected start() :
+
+// Laissez la méthode start vide, car ce sera à une classe fille comme Player, Alien ou Laser de la remplir avec les actions qu'elles voudront effectuer.
+
+// Dans le cas de Player, il veut définir sa propre image et sa position en bas au centre de l'écran.
+
+// Implémentez donc la méthode start dans Player.

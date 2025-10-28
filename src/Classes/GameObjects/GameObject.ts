@@ -41,15 +41,12 @@ export class GameObject {
             x: 0,
             y: 0
         };
+
+
+        this.image = Assets.getPlayerImage();
         this.image = Assets.getDefaultImage();
         this.game = game;
-
-        this.position = {
-            x: 100,
-            y: 50
-        };
-        this.image = Assets.getPlayerImage();
-
+        this.start();
     }
     // Getter d'image et de position
     public getImage(): HTMLImageElement {
@@ -65,41 +62,30 @@ export class GameObject {
     public getPlayer(): HTMLImageElement {
         return this.image;
     }
-// Et ajoutez un getter public pour que les GameObjects puissent accéder au Game. j'ai compris qu'il falalit mettre getGame dans ce fichier pas dans 
-//Game.ts
-public getGame() : Game{
-    return this.game;
-}
+    // Et ajoutez un getter public pour que les GameObjects puissent accéder au Game. j'ai compris qu'il falalit mettre getGame dans ce fichier pas dans 
+    //Game.ts
+    public getGame(): Game {
+        return this.game;
+    }
 
-    public setImage(image : HTMLImageElement){
+    public setImage(image: HTMLImageElement) {
         this.image = image;
     }
-    public setPosition(position : Position){
+    public setPosition(position: Position) {
         this.position = position;
     }
 
-    protected start(){ 
+    protected start() {
 
 
+
+    }
 
 }
 
-}
 
+// Laissez la méthode start vide, car ce sera à une classe fille comme Player, Alien ou Laser de la remplir avec les actions qu'elles voudront effectuer.
 
-////
+// Dans le cas de Player, il veut définir sa propre image et sa position en bas au centre de l'écran.
 
-Appelez ensuite cette méthode dans le constructeur.
-
-constructor(game : Game){
-    this.position = {
-        x : 0,
-        y : 0
-    };
-    this.image = Assets.getDefaultImage();
-    this.game = game;
-    // J'appelle start
-    this.start();
-}
-
-
+// Implémentez donc la méthode start dans Player.
