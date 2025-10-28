@@ -1,6 +1,6 @@
 import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
-// import { Input } from "./Input.js";
+import { Input } from "./Input.js";
 var Game = /** @class */ (function () {
     function Game() {
         this.CANVAS_WIDTH = 900;
@@ -20,7 +20,6 @@ var Game = /** @class */ (function () {
         var gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
-        this.loop();
         // J'instancie le Player avec new Player(this)
         // Je le dessine avec this.draw
         this.player = new Player(this);
@@ -29,9 +28,9 @@ var Game = /** @class */ (function () {
         Input.listen();
         // Démarre la boucle de jeu
         this.loop();
-        //alien
-        this.alien = new Alien(this);
-        this.draw(this.alien);
+        // //alien
+        // this.alien = new Alien(this);
+        // this.draw(this.alien);
     };
     //  La fonction draw qui affiche un gameObject
     Game.prototype.draw = function (gameObject) {

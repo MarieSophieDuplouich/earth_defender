@@ -36,6 +36,7 @@ public static getAlienImage() : HTMLImageElement{
 
     return image;
 }
+// la musique ici ????
 }
 
 
