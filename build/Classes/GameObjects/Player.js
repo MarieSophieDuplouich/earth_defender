@@ -15,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { Assets } from "../Assets.js";
 import { GameObject } from "./GameObject.js";
+import { Input } from "../Input.js";
 var Player = /** @class */ (function (_super) {
     __extends(Player, _super);
     function Player() {
@@ -30,9 +31,8 @@ var Player = /** @class */ (function (_super) {
         });
     };
     Player.prototype.update = function () {
-        console.log(this.getPosition());
         this.setPosition({
-            x: this.getPosition().x += this.speed,
+            x: this.getPosition().x += this.speed * Input.getAxisX(),
             y: this.getPosition().y
         });
     };

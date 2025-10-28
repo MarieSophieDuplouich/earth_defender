@@ -1,5 +1,6 @@
 import { Assets } from "../Assets.js";
 import { GameObject } from "./GameObject.js";
+import { Input } from "../Input.js";
 
 export class Player extends GameObject {
       private speed : number = 10;
@@ -13,9 +14,8 @@ export class Player extends GameObject {
 
     }
  protected update(): void {
-        console.log(this.getPosition());
-       this.setPosition({
-            x : this.getPosition().x += this.speed,
+        this.setPosition({
+            x : this.getPosition().x += this.speed*Input.getAxisX(),
             y : this.getPosition().y
         })
     }

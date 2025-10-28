@@ -1,5 +1,6 @@
 import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
+// import { Input } from "./Input.js";
 var Game = /** @class */ (function () {
     function Game() {
         this.CANVAS_WIDTH = 900;
@@ -19,13 +20,18 @@ var Game = /** @class */ (function () {
         var gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
-        this.loop();
+        // this.loop();
         // J'instancie le Player avec new Player(this)
         // codez ici...
         // Je le dessine avec this.draw
         // codez ici...
         this.player = new Player(this);
         this.draw(this.player);
+        // Écoute les inputs
+        this.
+            Input.listen();
+        // Démarre la boucle de jeu
+        this.loop();
     };
     //  La fonction draw qui affiche un gameObject//ici ça ne va pas 
     Game.prototype.draw = function (gameObject) {

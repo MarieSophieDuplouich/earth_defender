@@ -1,5 +1,6 @@
 import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
+// import { Input } from "./Input.js";
 
 export class Game {
 
@@ -26,7 +27,7 @@ export class Game {
         const gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
-        this.loop();
+        // this.loop();
 
 
          // J'instancie le Player avec new Player(this)
@@ -36,6 +37,11 @@ export class Game {
     // codez ici...
     this.player =  new Player(this);
     this.draw(this.player);
+        // Écoute les inputs
+    this.
+        Input.listen();
+    // Démarre la boucle de jeu
+    this.loop();
 
     }
 
