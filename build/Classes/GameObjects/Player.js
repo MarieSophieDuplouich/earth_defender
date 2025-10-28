@@ -22,7 +22,7 @@ var Player = /** @class */ (function (_super) {
     }
     Player.prototype.start = function () {
         this.setImage(Assets.getPlayerImage());
-        this.getPosition({
+        this.setPosition({
             x: this.getGame().CANVAS_WIDTH / 2,
             y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 10
         });

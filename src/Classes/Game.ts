@@ -35,7 +35,7 @@ export class Game {
     // Je le dessine avec this.draw
     // codez ici...
     this.player =  new Player(this);
-    this.draw(player);
+    this.draw(this.player);
 
     }
 
@@ -59,10 +59,10 @@ export class Game {
 // });
     }
 private loop(){
-        setInterval(()=>{
-            console.log("Frame!");
-        },10); 
-        // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
+         setInterval(()=>{
+        console.log("Frame!");
+        this.player.callUpdate();
+    },10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     }
 
 

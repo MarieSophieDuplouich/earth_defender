@@ -36,9 +36,21 @@ var GameObject = /** @class */ (function () {
     };
     GameObject.prototype.start = function () {
     };
+    GameObject.prototype.update = function () { };
+    GameObject.prototype.callUpdate = function () {
+        this.update();
+    };
     return GameObject;
 }());
 export { GameObject };
+// La méthode GameObject.update permet maintenant à n'importe quel GameObject d'effectuer des actions à chaque frame.
+// C'est une partie centrale de notre jeu.
+// Effectuer une action à chaque frame
+// Nous voulons donner au Player la liberté de mettre à jour sa position à chaque frame du jeu.
+// Pour cela, nous allons, comme pour GameObject.start(), créer une méthode protected nommée GameObject.update() qui sera appelée à chaque frame dans le setInterval().
+// Dans GameObject.ts
+// protected update(){}
+// Il faut appeler cette méthode dans le setInterval de la méthode Game.loop(). La méthode GameObject.update() étant protected, il nous faut ajouter une méthode publique pour y accéder depuis Game.
 // Laissez la méthode start vide, car ce sera à une classe fille comme Player, Alien ou Laser de la remplir avec les actions qu'elles voudront effectuer.
 // Dans le cas de Player, il veut définir sa propre image et sa position en bas au centre de l'écran.
 // Implémentez donc la méthode start dans Player.

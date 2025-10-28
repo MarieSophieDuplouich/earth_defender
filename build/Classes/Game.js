@@ -25,7 +25,7 @@ var Game = /** @class */ (function () {
         // Je le dessine avec this.draw
         // codez ici...
         this.player = new Player(this);
-        this.draw(player);
+        this.draw(this.player);
     };
     //  La fonction draw qui affiche un gameObject//ici ça ne va pas 
     Game.prototype.draw = function (gameObject) {
@@ -36,10 +36,11 @@ var Game = /** @class */ (function () {
         // });
     };
     Game.prototype.loop = function () {
+        var _this = this;
         setInterval(function () {
             console.log("Frame!");
-        }, 10);
-        // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
+            _this.player.callUpdate();
+        }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };
     return Game;
 }());
