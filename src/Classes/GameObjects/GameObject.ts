@@ -42,8 +42,8 @@ export class GameObject {
 
 
         this.position = {
-            x: 30,
-            y: 30
+            x: 100,
+            y: 50
         };
         this.image = Assets.getPlayerImage();
 
