@@ -14,14 +14,23 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import { GameObject } from "./GameObject.js";
+import { Assets } from "../Assets.js";
 var Player = /** @class */ (function (_super) {
     __extends(Player, _super);
     function Player() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    Player.prototype.start = function () {
+        this.setImage(Assets.getPlayerImage());
+        // Codez ici ...
+    };
     return Player;
 }(GameObject));
 export { Player };
+// Astuce : Souvenez-vous que l'origine (0,0) 
+// du canvas est en haut à gauche. 
+// Et que le center horinzontal est à CANVAS_WIDTH/2.
+// Utilisez donc la fonction this.getGame().CANVAS_WIDTH pour accéder à la largeur du canvas depuis la classe Player.
 // Pour créer la classe Player à partir de la classe GameObject, nous allons la faire hériter de GameObject avec le mot clé extends :
 // src/Classes/GameObjects/Player.ts
 // import { GameObject } from "./GameObject.js";
@@ -34,3 +43,5 @@ export { Player };
 // Laissez la méthode start vide, car ce sera à une classe fille comme Player, Alien ou Laser de la remplir avec les actions qu'elles voudront effectuer.
 // Dans le cas de Player, il veut définir sa propre image et sa position en bas au centre de l'écran.
 // Implémentez donc la méthode start dans Player.
+// Grâce à la méthode GameObject.setPosition() 
+// et aux constantes CANVAS_WIDTH et CANVAS_HEIGHT, positionnez le joueur au centre bas du canvas à 10px du bord.

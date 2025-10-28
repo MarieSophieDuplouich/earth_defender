@@ -77,10 +77,10 @@ export class GameObject {
         this.image = Assets.getDefaultImage();
 
 
-        this.position = {
-            x: 30,
-            y: 30
-        };
+        // this.position = {
+        //     x: 30,
+        //     y: 30
+        // };
         this.image = Assets.getPlayerImage();
 
 

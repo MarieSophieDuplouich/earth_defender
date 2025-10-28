@@ -24,10 +24,10 @@ var GameObject = /** @class */ (function () {
             y: 0
         };
         this.image = Assets.getDefaultImage();
-        this.position = {
-            x: 30,
-            y: 30
-        };
+        // this.position = {
+        //     x: 30,
+        //     y: 30
+        // };
         this.image = Assets.getPlayerImage();
     }
     // Getter d'image et de position
