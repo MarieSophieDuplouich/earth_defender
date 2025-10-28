@@ -39,6 +39,13 @@ var Game = /** @class */ (function () {
         var _this = this;
         setInterval(function () {
             console.log("Frame!");
+            // J'efface la frame précédente.
+            _this.context.clearRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
+            _this.context.fillStyle = "#141414";
+            _this.context.fillRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
+            // Je redessine le joueur à chaque frame
+            _this.draw(_this.player);
+            // Je mets à jour le joueur
             _this.player.callUpdate();
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };

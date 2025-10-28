@@ -58,13 +58,23 @@ export class Game {
 //   console.log(gameObject.currentTarget === this); // logs `true`
 // });
     }
-private loop(){
-         setInterval(()=>{
-        console.log("Frame!");
-        this.player.callUpdate();
-    },10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
-    }
 
+    private loop(){
+    setInterval(()=>{
+        console.log("Frame!");
+        // J'efface la frame précédente.
+        this.context.clearRect(0,0,this.CANVAS_WIDTH,this.CANVAS_HEIGHT);
+        this.context.fillStyle = "#141414";
+        this.context.fillRect(0,0,this.CANVAS_WIDTH,this.CANVAS_HEIGHT);
+        
+        // Je redessine le joueur à chaque frame
+        this.draw(this.player);
+
+        // Je mets à jour le joueur
+        this.player.callUpdate();
+
+    },10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
+}
 
 }
 

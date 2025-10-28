@@ -18,13 +18,22 @@ import { GameObject } from "./GameObject.js";
 var Player = /** @class */ (function (_super) {
     __extends(Player, _super);
     function Player() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.speed = 10;
+        return _this;
     }
     Player.prototype.start = function () {
         this.setImage(Assets.getPlayerImage());
         this.setPosition({
             x: this.getGame().CANVAS_WIDTH / 2,
             y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 10
+        });
+    };
+    Player.prototype.update = function () {
+        console.log(this.getPosition());
+        this.setPosition({
+            x: this.getPosition().x += this.speed,
+            y: this.getPosition().y
         });
     };
     return Player;
