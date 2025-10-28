@@ -43,11 +43,15 @@ export class Game {
         // Démarre la boucle de jeu
         this.loop();
 
+        //alien
+        this.alien = new Alien(this);
+        this.draw(this.alien);
+
     }
 
 
 
-    //  La fonction draw qui affiche un gameObject//ici ça ne va pas 
+    //  La fonction draw qui affiche un gameObject
     private draw(gameObject: GameObject) {
 
         this.context.drawImage(
