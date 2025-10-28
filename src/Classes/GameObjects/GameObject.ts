@@ -78,7 +78,28 @@ public getGame() : Game{
         this.position = position;
     }
 
+    protected start(){ 
+
+
+
 }
 
+}
+
+
+////
+
+Appelez ensuite cette méthode dans le constructeur.
+
+constructor(game : Game){
+    this.position = {
+        x : 0,
+        y : 0
+    };
+    this.image = Assets.getDefaultImage();
+    this.game = game;
+    // J'appelle start
+    this.start();
+}
 
 
