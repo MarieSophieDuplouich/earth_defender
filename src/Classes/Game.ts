@@ -46,9 +46,6 @@ export class Game {
 
         Music.startMusic();
 
-         //La Musique du boss
-        Music.startMusicBoss();
-
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
@@ -80,7 +77,7 @@ export class Game {
         this.alien = new Alien(this);
         this.draw(this.alien);
 
-        //   const nbAliens = 10;
+        //   const nbAliens = 10; ancien code 
         // for (let i = 0; i < nbAliens; i++) {
         //     aliens.push(new GameObject(alienImg, {
         //         x: Math.random() * (CANVAS_WIDTH - alienImg.width),
@@ -93,7 +90,7 @@ export class Game {
             this.instanciate(new Alien(this));
         }
 
-        // Fond étoilé
+        // Fond étoilé ancien code
         //         for (let i = 0; i < 30; i++) {
         //             context.drawImage(
         //                 starImage,
@@ -132,7 +129,7 @@ export class Game {
 
     private loop() {
         setInterval(() => {
-            console.log("Frame!");
+            // console.log("Frame!");
             // J'efface la frame précédente.
             this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
             this.context.fillStyle = "#141414";
@@ -148,7 +145,9 @@ export class Game {
             this.alien.callUpdate();
             this.draw(this.alien);
 
-
+             //La Musique du boss
+              Music.startMusicBoss();
+              
             // Pour chaque gameObject
             // Mettez-les à jour et redessinez-les
             // Chapitre 9 - Détecter les collisions entre GameObject
@@ -173,24 +172,4 @@ export class Game {
 
 
 
-
-// const image = new Image(60, 45); // Using optional size for image
-// image.onload = drawImageActualSize; // Draw when image has loaded
-
-// // Load an image of intrinsic size 300x227 in CSS pixels
-// image.src = "https://mdn.github.io/shared-assets/images/examples/rhino.jpg";
-
-// function drawImageActualSize() {
-//   // Use the intrinsic size of image in CSS pixels for the canvas element
-//   canvas.width = this.naturalWidth;
-//   canvas.height = this.naturalHeight;
-
-//   // Will draw the image as 300x227, ignoring the custom size of 60x45
-//   // given in the constructor
-//   ctx.drawImage(this, 0, 0);
-
-//   // To use the custom size we'll have to specify the scale parameters
-//   // using the element's width and height properties - lets draw one
-//   // on top in the corner:
-//   ctx.drawImage(this, 0, 0, this.width, this.height);
-// }
+        

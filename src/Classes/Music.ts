@@ -86,21 +86,7 @@ export class Music {
 
     }
 
-   public static allAlienskilledBosscome(nbAliens:number):void{
 
-      // ici il faut mettre si les 15 aliens ont été tués le boss apparaîty et la musique avec
-     
-        if ( nbAliens === 0){
-
-             this.startMusicBoss();
-               console.log( "musique du boss se lance !");
-       
-        }
-         else {
-            console.log( "musique du boss ne se lance pas !");
-         }
-
-   }
 }
 
 // Music.initializeListeners();

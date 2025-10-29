@@ -60,16 +60,6 @@ var Music = /** @class */ (function () {
             this.isPlayingBoss = false;
         }
     };
-    Music.allAlienskilledBosscome = function (nbAliens) {
-        // ici il faut mettre si les 15 aliens ont été tués le boss apparaîty et la musique avec
-        if (nbAliens === 0) {
-            this.startMusicBoss();
-            console.log("musique du boss se lance !");
-        }
-        else {
-            console.log("musique du boss ne se lance pas !");
-        }
-    };
     Music.bossMusic = document.getElementById('boss-music');
     Music.bgMusic = document.getElementById('bg-music');
     Music.isPlaying = false;
