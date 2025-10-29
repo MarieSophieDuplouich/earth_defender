@@ -3,6 +3,7 @@ import { Player } from "./GameObjects/Player.js";
 import { Input } from "./Input.js";
 import { Music } from "./Music.js";
 import { Alien } from "./GameObjects/Alien.js";
+import { Star } from "./GameObjects/Star.js";
 //J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
 // D'après Massi, je dois le mettre dans la méthode start()
 var Game = /** @class */ (function () {
@@ -57,6 +58,19 @@ var Game = /** @class */ (function () {
         // }
         for (var i = 0; i < this.nbAliens; i++) {
             this.instanciate(new Alien(this));
+        }
+        // Fond étoilé
+        //         for (let i = 0; i < 30; i++) {
+        //             context.drawImage(
+        //                 starImage,
+        //                 Math.random() * CANVAS_WIDTH,
+        //                 Math.random() * CANVAS_HEIGHT,
+        //                 starImage.width,
+        //                 starImage.height
+        //             );
+        //         }
+        for (var i = 0; i < 100; i++) {
+            this.instanciate(new Star(this));
         }
     };
     //  La fonction draw qui affiche un gameObject

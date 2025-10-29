@@ -32,6 +32,13 @@ var Assets = /** @class */ (function () {
             throw Error("No alien asset found");
         return image;
     };
+    //étoiles
+    Assets.getStarImage = function () {
+        var image = document.querySelector("img.star");
+        if (image == null)
+            throw Error("No alien asset found");
+        return image;
+    };
     return Assets;
 }());
 export { Assets };

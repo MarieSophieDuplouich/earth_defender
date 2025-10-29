@@ -36,6 +36,14 @@ public static getAlienImage() : HTMLImageElement{
 
     return image;
 }
+//étoiles
+
+public static getStarImage() : HTMLImageElement{
+    const image: HTMLImageElement = document.querySelector("img.star");
+    if(image == null) throw Error("No alien asset found");
+
+    return image;
+}
 
 }
 
