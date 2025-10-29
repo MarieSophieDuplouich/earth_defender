@@ -71,3 +71,68 @@ var Input = /** @class */ (function () {
     return Input;
 }());
 export { Input };
+//ajouter P comme pause
+//
+//     const missileImg: HTMLImageElement = document.querySelector("img.missile");
+//     const missiles: GameObject[] = [];
+//varaibale du jeu 
+//     const missiles: GameObject[] = [];
+//         // Missiles
+//         for (let i = missiles.length - 1; i >= 0; i--) {
+//             const missile = missiles[i];
+//             missile.position.y -= 8;
+//             context.drawImage(
+//                 missile.image,
+//                 missile.position.x,
+//                 missile.position.y,
+//                 missile.image.width,
+//                 missile.image.height
+//             );
+//             // Supprimer les missiles sortis du haut
+//             if (missile.position.y + missile.image.height < 0) {
+//                 missiles.splice(i, 1);
+//             }
+//         }
+//     // --- Gestion des touches --- /
+//     // quand je tire un missile la musique s'active
+//     const shootMusicsound = document.getElementById('shoot-music') as HTMLAudioElement;
+//     function shootMusiques() {
+//         if (shootMusicsound.paused) {
+//             shootMusicsound.currentTime = 0;
+//             shootMusicsound.volume = 0.5;
+//             shootMusicsound.play();
+//         } else {
+//             shootMusicsound.currentTime = 0;
+//         }
+//         document.addEventListener('keydown', shootMusiques);
+//     }
+//     document.addEventListener("keydown", (event) => {
+//         if (gameOver) return; // Bloque le contrôle après game over
+//         switch (event.key) {
+//             case "d":
+//             case "D":
+//                 direction = 1;
+//                 break;
+//             case "q":
+//             case "Q":
+//                 direction = -1;
+//                 break;
+//             case " ":
+//                 // Tirer un missile
+//                 missiles.push(new GameObject(
+//                     missileImg,
+//                     {
+//                         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
+//                         y: playerPos.y - missileImg.height
+//                     }
+//                 ));
+//                 shootMusiques();
+//                 break;
+//         }
+//     });
+//     document.addEventListener("keyup", (event) => {
+//         if (["d", "D", "q", "Q"].includes(event.key)) {
+//             direction = 0;
+//         }
+//     });
+// }

@@ -34,6 +34,7 @@ var GameObject = /** @class */ (function () {
     GameObject.prototype.setPosition = function (position) {
         this.position = position;
     };
+    // pourquoi cette méthode est-elle vide ?
     GameObject.prototype.start = function () {
     };
     GameObject.prototype.update = function () { };

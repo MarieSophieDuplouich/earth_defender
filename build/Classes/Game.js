@@ -97,9 +97,18 @@ var Game = /** @class */ (function () {
             _this.draw(_this.alien);
             // Pour chaque gameObject
             // Mettez-les à jour et redessinez-les
+            // Chapitre 9 - Détecter les collisions entre GameObject
+            // Pour détecter une collision, il faut savoir si un GameObject est en contact avec un autre.
+            // Dans la boucle d'événements, j'ai actuellement une boucle for qui dessine tous les GameObjects.
+            //Pour commencer, on peut vérifier si un alien touche le joueur.
             _this.gameObjects.forEach(function (go) {
                 go.callUpdate();
                 _this.draw(go);
+                // Je dois donc créer une méthode overlap ...
+                //Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
+                // if (go instanceof Alien && this.player.overlap(go)) {
+                //     console.log("Alien touche le joueur");
+                // }
             });
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };

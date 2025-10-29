@@ -3,7 +3,7 @@ import { Player } from "./GameObjects/Player.js";
 import { Input } from "./Input.js";
 import { Music } from "./Music.js";
 import { Alien } from "./GameObjects/Alien.js";
-import {Star} from "./GameObjects/Star.js";
+import { Star } from "./GameObjects/Star.js";
 
 
 //J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
@@ -89,21 +89,21 @@ export class Game {
             this.instanciate(new Alien(this));
         }
 
-               // Fond étoilé
-//         for (let i = 0; i < 30; i++) {
-//             context.drawImage(
-//                 starImage,
-//                 Math.random() * CANVAS_WIDTH,
-//                 Math.random() * CANVAS_HEIGHT,
-//                 starImage.width,
-//                 starImage.height
-//             );
-//         }
+        // Fond étoilé
+        //         for (let i = 0; i < 30; i++) {
+        //             context.drawImage(
+        //                 starImage,
+        //                 Math.random() * CANVAS_WIDTH,
+        //                 Math.random() * CANVAS_HEIGHT,
+        //                 starImage.width,
+        //                 starImage.height
+        //             );
+        //         }
 
-            for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 100; i++) {
             this.instanciate(new Star(this));
         }
-       
+
     }
 
 
@@ -147,9 +147,19 @@ export class Game {
 
             // Pour chaque gameObject
             // Mettez-les à jour et redessinez-les
+            // Chapitre 9 - Détecter les collisions entre GameObject
+            // Pour détecter une collision, il faut savoir si un GameObject est en contact avec un autre.
+
+            // Dans la boucle d'événements, j'ai actuellement une boucle for qui dessine tous les GameObjects.
+            //Pour commencer, on peut vérifier si un alien touche le joueur.
             this.gameObjects.forEach(go => {
                 go.callUpdate();
                 this.draw(go);
+                // Je dois donc créer une méthode overlap ...
+                //Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
+                // if (go instanceof Alien && this.player.overlap(go)) {
+                //     console.log("Alien touche le joueur");
+                // }
             })
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s

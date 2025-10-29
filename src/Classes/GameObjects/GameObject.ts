@@ -80,6 +80,7 @@ export class GameObject {
         this.position = position;
     }
 
+    // pourquoi cette méthode est-elle vide ?
     protected start() {
 
 
