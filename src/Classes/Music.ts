@@ -24,27 +24,45 @@
 
 
 class Music {
-    private static bgMusic: HTMLAudioElement = document.getElementById('bg-music') as HTMLAudioElement;
-    private static isPlaying: boolean = false;
+    static bgMusic: HTMLAudioElement = document.getElementById('bg-music') as HTMLAudioElement;
+    static isPlaying: boolean = false;
 
-    // méthode privée : ajoute less écoutezurs d'évènments
+    // méthode "static" : ajoute less écoutezurs d'évènments
 
-    public static  initializeListeners() {
+    static initializeListeners() {
         document.addEventListener('click', () => this.startMusic());
         document.addEventListener('keydown', () => this.startMusic());
 
     }
 
     // Ici ça démarre la musique
-    public static startMusic() {
+    static startMusic() {
         if (!this.isPlaying && this.bgMusic) {
             this.bgMusic.volume = 0.5;
             this.bgMusic.play();
             this.isPlaying = true;
             console.log("music normale du jeu lancée !");
-            console.log("music boss du jeu lancée !");
+
         }
 
     }
 
+    //musique stoppe
+      static stopMusic() {
+        if (!this.isPlaying && this.bgMusic) {
+            this.bgMusic.pause();
+            this.isPlaying = false;
+            console.log("music normale du jeu stoppe !");
+
+        }
+
+    }
+    //musique du boss
+
+
+
 }
+
+Music.initializeListeners();
+
+//   console.log("music boss du jeu lancée !");

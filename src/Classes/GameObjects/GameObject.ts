@@ -24,7 +24,7 @@
 // Sinon il est impossible d'accéder au contexte du canvas ( l'attribut this.context étant privé à la classe Game).
 
 // La méthode Game.draw() prend en paramètre un GameObject et le dessine dans la balise canvas avec la méthode this.context.drawImage() :
-
+//Il faut mettre ici tout ce qu'on voit pas la musique
 
 import { Position } from "../Position.js";
 import { Game } from "../Game.js";

@@ -1,6 +1,7 @@
 import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
 import { Input } from "./Input.js";
+import { Music } from "../Classes/Music.js";
 
 //J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
 // D'après Massi, je dois le mettre dans la méthode start()
@@ -30,6 +31,10 @@ export class Game {
         const gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
+
+       //LA MUSIQUE
+       
+        Music.startMusic();
 
 
         // J'instancie le Player avec new Player(this)

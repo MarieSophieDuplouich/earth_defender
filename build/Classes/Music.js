@@ -21,7 +21,7 @@
 var Music = /** @class */ (function () {
     function Music() {
     }
-    // méthode privée : ajoute less écoutezurs d'évènments
+    // méthode "static" : ajoute less écoutezurs d'évènments
     Music.initializeListeners = function () {
         var _this = this;
         document.addEventListener('click', function () { return _this.startMusic(); });
@@ -34,10 +34,19 @@ var Music = /** @class */ (function () {
             this.bgMusic.play();
             this.isPlaying = true;
             console.log("music normale du jeu lancée !");
-            console.log("music boss du jeu lancée !");
+        }
+    };
+    //musique stoppe
+    Music.stopMusic = function () {
+        if (!this.isPlaying && this.bgMusic) {
+            this.bgMusic.pause();
+            this.isPlaying = false;
+            console.log("music normale du jeu stoppe !");
         }
     };
     Music.bgMusic = document.getElementById('bg-music');
     Music.isPlaying = false;
     return Music;
 }());
+Music.initializeListeners();
+//   console.log("music boss du jeu lancée !");
