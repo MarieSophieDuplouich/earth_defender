@@ -19,7 +19,8 @@ export class Assets{
         }
         return image;
     }
-
+    
+// Player
     public static getPlayerImage(){
         const image : HTMLImageElement = document.querySelector("img#asset_player");
         if(image == null){
@@ -29,7 +30,7 @@ export class Assets{
     }
 
 
-// ++
+// Alien
 public static getAlienImage() : HTMLImageElement{
     const image: HTMLImageElement = document.querySelector("img#asset_alien");
     if(image == null) throw Error("No alien asset found");
@@ -40,10 +41,27 @@ public static getAlienImage() : HTMLImageElement{
 
 public static getStarImage() : HTMLImageElement{
     const image: HTMLImageElement = document.querySelector("img.star");
-    if(image == null) throw Error("No alien asset found");
+    if(image == null) throw Error("No star asset found");
 
     return image;
 }
+
+//Boss
+public static getBossImage() : HTMLImageElement{
+    const image: HTMLImageElement = document.querySelector("img.boss");
+    if(image == null) throw Error("No boss asset found");
+
+    return image;
+}
+
+//Sol
+public static getSolImage() : HTMLImageElement{
+    const image: HTMLImageElement = document.querySelector("img.sol");
+    if(image == null) throw Error("No ground asset found");
+
+    return image;
+}
+
 
 }
 

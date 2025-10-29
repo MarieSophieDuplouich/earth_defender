@@ -18,6 +18,7 @@ var Assets = /** @class */ (function () {
         }
         return image;
     };
+    // Player
     Assets.getPlayerImage = function () {
         var image = document.querySelector("img#asset_player");
         if (image == null) {
@@ -25,7 +26,7 @@ var Assets = /** @class */ (function () {
         }
         return image;
     };
-    // ++
+    // Alien
     Assets.getAlienImage = function () {
         var image = document.querySelector("img#asset_alien");
         if (image == null)
@@ -36,7 +37,21 @@ var Assets = /** @class */ (function () {
     Assets.getStarImage = function () {
         var image = document.querySelector("img.star");
         if (image == null)
-            throw Error("No alien asset found");
+            throw Error("No star asset found");
+        return image;
+    };
+    //Boss
+    Assets.getBossImage = function () {
+        var image = document.querySelector("img.boss");
+        if (image == null)
+            throw Error("No boss asset found");
+        return image;
+    };
+    //Sol
+    Assets.getSolImage = function () {
+        var image = document.querySelector("img.sol");
+        if (image == null)
+            throw Error("No ground asset found");
         return image;
     };
     return Assets;
