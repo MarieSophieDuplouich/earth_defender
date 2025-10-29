@@ -29,8 +29,7 @@
 import { Position } from "../Position.js";
 import { Game } from "../Game.js";
 import { Assets } from "../Assets.js";
-
-
+import { Alien } from "../GameObjects/Alien.js";
 
 
 export class GameObject {

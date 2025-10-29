@@ -23,20 +23,20 @@
 
 
 
-class Music {
-    static bgMusic: HTMLAudioElement = document.getElementById('bg-music') as HTMLAudioElement;
-    static isPlaying: boolean = false;
+export class Music {
+   private static bgMusic: HTMLAudioElement = document.getElementById('bg-music') as HTMLAudioElement;
+   private static isPlaying: boolean = false;
 
-    // méthode "static" : ajoute less écoutezurs d'évènments
+    // méthode "static" : ajoute less écouteurs d'évènments
 
-    static initializeListeners() {
+  public static initializeListeners() {
         document.addEventListener('click', () => this.startMusic());
         document.addEventListener('keydown', () => this.startMusic());
 
     }
 
     // Ici ça démarre la musique
-    static startMusic() {
+    public static startMusic() {
         if (!this.isPlaying && this.bgMusic) {
             this.bgMusic.volume = 0.5;
             this.bgMusic.play();
@@ -48,11 +48,10 @@ class Music {
     }
 
     //musique stoppe
-      static stopMusic() {
-        if (!this.isPlaying && this.bgMusic) {
+    public static stopMusic() {
+        if (this.isPlaying && this.bgMusic) {
             this.bgMusic.pause();
             this.isPlaying = false;
-            console.log("music normale du jeu stoppe !");
 
         }
 
@@ -63,6 +62,6 @@ class Music {
 
 }
 
-Music.initializeListeners();
+// Music.initializeListeners();
 
 //   console.log("music boss du jeu lancée !");

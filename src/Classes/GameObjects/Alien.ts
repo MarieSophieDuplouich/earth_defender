@@ -1,7 +1,8 @@
-// import { Assets } from "../Assets.ts";
-// import { GameObject } from "./GameObject.js";
+import { GameObject } from "./GameObject.js";
+import { Assets } from "../Assets.js";
+import { Input } from "../Input.js";
 
-// export class Alien extends GameObject{
+export class Alien extends GameObject{
 //     private speed : number = 1;
 
 //     protected start(): void {
@@ -28,7 +29,27 @@
 //         })
         
 //     }
-// }
+
+
+    private speed : number = 1;
+    protected start(): void {
+        // Définissez l'image de l'alien
+        this.setImage(Assets.getAlienImage());
+        // Faite le apparaitre à une position aléatoire dans le canvas
+        this.setPosition({
+            x : Math.random() * this.getGame().CANVAS_WIDTH,
+            y : Math.random() * this.getGame().CANVAS_HEIGHT /4 - 50,
+        });
+    }
+
+    protected update(): void {
+        // Faite avancer l'alien vers le bas du Canvas
+        this.setPosition({
+            x : this.getPosition().x,
+            y : this.getPosition().y +=this.speed
+        })
+    }
+}
 
 // //// ancien code sans poo
 

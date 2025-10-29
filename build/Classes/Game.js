@@ -1,20 +1,31 @@
 import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
 import { Input } from "./Input.js";
-import { Music } from "../Classes/Music.js";
+import { Music } from "./Music.js";
+import { Alien } from "./GameObjects/Alien.js";
 //J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
 // D'après Massi, je dois le mettre dans la méthode start()
 var Game = /** @class */ (function () {
     function Game() {
         this.CANVAS_WIDTH = 900;
         this.CANVAS_HEIGHT = 600;
+        this.nbAliens = 10;
+        // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
+        // par la boucle d'événement, il nous faut donc mettre à jour
+        //  le code de la fonction Game.start() pour rajouter notre player dans ce tableau.
+        this.gameObjects = [];
         // Init Game canvas
         var canvas = document.querySelector("canvas");
         canvas.height = this.CANVAS_HEIGHT;
         canvas.width = this.CANVAS_WIDTH;
         this.context = canvas.getContext("2d");
     }
+    Game.prototype.instanciate = function (gameObject) {
+        this.gameObjects.push(gameObject);
+    };
     Game.prototype.start = function () {
+        //LA MUSIQUE
+        Music.startMusic();
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
@@ -23,19 +34,30 @@ var Game = /** @class */ (function () {
         var gameObject = new GameObject(this);
         // Je le dessine
         this.draw(gameObject);
-        //LA MUSIQUE
-        Music.startMusic();
         // J'instancie le Player avec new Player(this)
         // Je le dessine avec this.draw
         this.player = new Player(this);
         this.draw(this.player);
         // Écoute les inputs
+        // J'ajoute le player au tableau de GameObject
+        this.instanciate(this.player);
         Input.listen();
         // Démarre la boucle de jeu
         this.loop();
-        // //alien
-        // this.alien = new Alien(this);
-        // this.draw(this.alien);
+        // ++ Instanciation de l'alien
+        //alien
+        this.alien = new Alien(this);
+        this.draw(this.alien);
+        //   const nbAliens = 10;
+        // for (let i = 0; i < nbAliens; i++) {
+        //     aliens.push(new GameObject(alienImg, {
+        //         x: Math.random() * (CANVAS_WIDTH - alienImg.width),
+        //         y: Math.random() * -200
+        //     }));
+        // }
+        for (var i = 0; i < this.nbAliens; i++) {
+            this.instanciate(new Alien(this));
+        }
     };
     //  La fonction draw qui affiche un gameObject
     Game.prototype.draw = function (gameObject) {
@@ -53,10 +75,18 @@ var Game = /** @class */ (function () {
             _this.context.clearRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
             _this.context.fillStyle = "#141414";
             _this.context.fillRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
-            // Je redessine le joueur à chaque frame
-            _this.draw(_this.player);
             // Je mets à jour le joueur
             _this.player.callUpdate();
+            // Je redessine le joueur à chaque frame
+            _this.draw(_this.player);
+            _this.alien.callUpdate();
+            _this.draw(_this.alien);
+            // Pour chaque gameObject
+            // Mettez-les à jour et redessinez-les
+            _this.gameObjects.forEach(function (go) {
+                go.callUpdate();
+                _this.draw(go);
+            });
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };
     return Game;
