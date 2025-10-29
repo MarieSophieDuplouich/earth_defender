@@ -30,21 +30,7 @@
   <source src="./public/images/Ian Post - 8 Bit Samba (1).mp3" type="audio/mp3">
   Votre navigateur ne supporte pas l'audio.
 </audio>
-     <script>
-        // Démarrage de la musique au premier clic ou touche
-        const bgMusic = document.getElementById('bg-music');
-        function startMusic() {
-            if (bgMusic.paused) {
-                bgMusic.volume = 0.5; // ajuster le volume
-                bgMusic.play();
-            }
-            document.removeEventListener('keydown', startMusic);
-            document.removeEventListener('click', startMusic);
-        }
-        document.addEventListener('keydown', startMusic);
-        document.addEventListener('click', startMusic);
-
-    </script>
+ 
 </body>
 <script type="module" src="./build/script.js"></script>
 

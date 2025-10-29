@@ -1,6 +1,8 @@
 import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
 import { Input } from "./Input.js";
+//J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
+// D'après Massi, je dois le mettre dans la méthode start()
 var Game = /** @class */ (function () {
     function Game() {
         this.CANVAS_WIDTH = 900;

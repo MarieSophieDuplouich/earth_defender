@@ -63,9 +63,8 @@ window.onload = ()=>{
     game.start();
 }
 
-
 export class GameObject {
-
+    
     private position: Position;
     private image: HTMLImageElement;
 

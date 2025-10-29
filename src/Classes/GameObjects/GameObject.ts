@@ -30,13 +30,19 @@ import { Position } from "../Position.js";
 import { Game } from "../Game.js";
 import { Assets } from "../Assets.js";
 
-export class GameObject {
 
+
+
+export class GameObject {
+    
+   
     private position: Position;
     private image: HTMLImageElement;
     private game: Game;
 
+
     constructor(game: Game) {
+       
         this.position = {
             x: 0,
             y: 0
