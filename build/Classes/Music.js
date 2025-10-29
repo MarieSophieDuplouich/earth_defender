@@ -26,10 +26,6 @@ var Music = /** @class */ (function () {
         var _this = this;
         document.addEventListener('click', function () { return _this.startMusic(); });
         document.addEventListener('keydown', function () { return _this.startMusic(); });
-        // ici il faut mettre si les 15 aliens ont été tués le boss apparaîty et la musique avec
-        // le addeventlistern ner sert à rien ici
-        document.addEventListener('click', function () { return _this.startMusicBoss(); });
-        document.addEventListener('keydown', function () { return _this.startMusicBoss(); });
     };
     // Ici ça démarre la musique
     Music.startMusic = function () {
@@ -50,23 +46,34 @@ var Music = /** @class */ (function () {
     //musique du boss
     // Ici ça démarre la musique du Boss
     Music.startMusicBoss = function () {
-        if (!this.isPlaying && this.bossMusic) {
+        if (!this.isPlayingBoss && this.bossMusic) {
             this.bossMusic.volume = 0.5;
             this.bossMusic.play();
-            this.isPlaying = true;
+            this.isPlayingBoss = true;
             console.log("musique du boss du jeu lancée !");
         }
     };
     //musique Boss stoppe
     Music.stopMusicBoss = function () {
-        if (this.isPlaying && this.bossMusic) {
+        if (this.isPlayingBoss && this.bossMusic) {
             this.bossMusic.pause();
-            this.isPlaying = false;
+            this.isPlayingBoss = false;
+        }
+    };
+    Music.allAlienskilledBosscome = function (nbAliens) {
+        // ici il faut mettre si les 15 aliens ont été tués le boss apparaîty et la musique avec
+        if (nbAliens === 0) {
+            this.startMusicBoss();
+            console.log("musique du boss se lance !");
+        }
+        else {
+            console.log("musique du boss ne se lance pas !");
         }
     };
     Music.bossMusic = document.getElementById('boss-music');
     Music.bgMusic = document.getElementById('bg-music');
     Music.isPlaying = false;
+    Music.isPlayingBoss = false;
     return Music;
 }());
 export { Music };

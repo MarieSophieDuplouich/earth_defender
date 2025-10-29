@@ -11,6 +11,8 @@ var Game = /** @class */ (function () {
         this.CANVAS_WIDTH = 900;
         this.CANVAS_HEIGHT = 600;
         this.nbAliens = 10;
+        // private boss : Boss;
+        // private sol : Sol;
         // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
         // par la boucle d'événement, il nous faut donc mettre à jour
         //  le code de la fonction Game.start() pour rajouter notre player dans ce tableau.
@@ -27,10 +29,11 @@ var Game = /** @class */ (function () {
     Game.prototype.start = function () {
         //LA MUSIQUE
         Music.startMusic();
+        //La Musique du boss
+        Music.startMusicBoss();
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-        console.log("coucou");
         // J'instancie un GameObject
         var gameObject = new GameObject(this);
         // Je le dessine

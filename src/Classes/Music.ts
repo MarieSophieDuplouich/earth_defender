@@ -16,6 +16,8 @@
 //     document.addEventListener('keydown', startMusic);
 //     document.addEventListener('click', startMusic);
 
+import { Alien } from "./GameObjects/Alien";
+
 // </script>
 
 // si on voit un any dans un projet typescript ce n'est pas bon signe il faut l'enlever 
@@ -27,19 +29,14 @@ export class Music {
    private static bossMusic: HTMLAudioElement = document.getElementById('boss-music') as HTMLAudioElement;
    private static bgMusic: HTMLAudioElement = document.getElementById('bg-music') as HTMLAudioElement;
    private static isPlaying: boolean = false;
+   private static isPlayingBoss: boolean = false;
+
 
     // méthode "static" : ajoute less écouteurs d'évènments
 
   public static initializeListeners() {
         document.addEventListener('click', () => this.startMusic());
         document.addEventListener('keydown', () => this.startMusic());
-
-
-        // ici il faut mettre si les 15 aliens ont été tués le boss apparaîty et la musique avec
-        // le addeventlistern ner sert à rien ici
-          document.addEventListener('click', () => this.startMusicBoss());
-        document.addEventListener('keydown', () => this.startMusicBoss());
-
     }
 
     // Ici ça démarre la musique
@@ -69,10 +66,10 @@ export class Music {
 
     // Ici ça démarre la musique du Boss
     public static startMusicBoss() {
-        if (!this.isPlaying && this.bossMusic) {
+        if (!this.isPlayingBoss && this.bossMusic) {
             this.bossMusic.volume = 0.5;
             this.bossMusic.play();
-            this.isPlaying = true;
+            this.isPlayingBoss = true;
             console.log("musique du boss du jeu lancée !");
 
         }
@@ -81,15 +78,29 @@ export class Music {
 
     //musique Boss stoppe
     public static stopMusicBoss() {
-        if (this.isPlaying && this.bossMusic) {
+        if (this.isPlayingBoss && this.bossMusic) {
             this.bossMusic.pause();
-            this.isPlaying = false;
+            this.isPlayingBoss = false;
 
         }
 
     }
 
+   public static allAlienskilledBosscome(nbAliens:number):void{
 
+      // ici il faut mettre si les 15 aliens ont été tués le boss apparaîty et la musique avec
+     
+        if ( nbAliens === 0){
+
+             this.startMusicBoss();
+               console.log( "musique du boss se lance !");
+       
+        }
+         else {
+            console.log( "musique du boss ne se lance pas !");
+         }
+
+   }
 }
 
 // Music.initializeListeners();

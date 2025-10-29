@@ -28,6 +28,9 @@ export class Game {
     private alien: Alien;
     private nbAliens: number = 10;
 
+    // private boss : Boss;
+    // private sol : Sol;
+
     // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
     // par la boucle d'événement, il nous faut donc mettre à jour
     //  le code de la fonction Game.start() pour rajouter notre player dans ce tableau.
@@ -43,11 +46,12 @@ export class Game {
 
         Music.startMusic();
 
+         //La Musique du boss
+        Music.startMusicBoss();
 
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-        console.log("coucou");
 
         // J'instancie un GameObject
         const gameObject = new GameObject(this);
