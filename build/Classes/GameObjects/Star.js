@@ -30,7 +30,8 @@ var Star = /** @class */ (function (_super) {
     Star.prototype.update = function () {
         this.setPosition({
             x: this.getPosition().x,
-            y: this.getPosition().y + 1
+            //rendre le décor étoilé plus lent avec le y+1
+            y: this.getPosition().y + 0.1
         });
         if (this.getPosition().y > this.getGame().CANVAS_HEIGHT) {
             this.setPosition({
