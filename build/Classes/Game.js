@@ -27,6 +27,10 @@ var Game = /** @class */ (function () {
     Game.prototype.instanciate = function (gameObject) {
         this.gameObjects.push(gameObject);
     };
+    Game.prototype.over = function () {
+        alert("GameOver!");
+        window.location.reload();
+    };
     Game.prototype.start = function () {
         //sol
         this.sol = new Sol(this); // je pense pas qu'il y ait un intérêt car il y a un sol
@@ -121,14 +125,14 @@ var Game = /** @class */ (function () {
             _this.gameObjects.forEach(function (go) {
                 go.callUpdate();
                 _this.draw(go);
-                // this.gameObjects.forEach(other => {
-                //     // +
-                //     // Si le gameObject chevauche un gameObject qui n'est pas lui-même
-                //     if (other != go && go.overlap(other)) {
-                //         console.log("Deux GameObject différents se touchent");
-                //         go.callCollide(other); // J'appelle la méthode collide de mon GameObject
-                //     }
-                // })
+                _this.gameObjects.forEach(function (other) {
+                    // +
+                    // Si le gameObject chevauche un gameObject qui n'est pas lui-même
+                    if (other != go && go.overlap(other)) {
+                        console.log("Deux GameObject différents se touchent");
+                        go.callCollide(other); // J'appelle la méthode collide de mon GameObject
+                    }
+                });
             });
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };

@@ -42,6 +42,11 @@ export class Game {
     public instanciate(gameObject: GameObject): void {
         this.gameObjects.push(gameObject);
     }
+     
+        public over() : void{
+        alert("GameOver!")
+        window.location.reload();
+    }
 
 
     public start(): void {
@@ -179,14 +184,14 @@ export class Game {
                 go.callUpdate();
                 this.draw(go);
 
-                // this.gameObjects.forEach(other => {
-                //     // +
-                //     // Si le gameObject chevauche un gameObject qui n'est pas lui-même
-                //     if (other != go && go.overlap(other)) {
-                //         console.log("Deux GameObject différents se touchent");
-                //         go.callCollide(other); // J'appelle la méthode collide de mon GameObject
-                //     }
-                // })
+                this.gameObjects.forEach(other => {
+                    // +
+                    // Si le gameObject chevauche un gameObject qui n'est pas lui-même
+                    if (other != go && go.overlap(other)) {
+                        console.log("Deux GameObject différents se touchent");
+                        go.callCollide(other); // J'appelle la méthode collide de mon GameObject
+                    }
+                })
             })
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s

@@ -92,6 +92,11 @@ export class GameObject {
         this.update();
     }
 
+    protected collide(other: GameObject) { }
+
+    public callCollide(other: GameObject): void {
+        this.collide(other);
+    }
 
     ////dernière partie du cours de Massi Partie 4 - Aïe, ça fait mal. Les collisions.
     // Chapitre 9 - Détecter les collisions entre GameObject

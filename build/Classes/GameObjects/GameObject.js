@@ -41,6 +41,10 @@ var GameObject = /** @class */ (function () {
     GameObject.prototype.callUpdate = function () {
         this.update();
     };
+    GameObject.prototype.collide = function (other) { };
+    GameObject.prototype.callCollide = function (other) {
+        this.collide(other);
+    };
     ////dernière partie du cours de Massi Partie 4 - Aïe, ça fait mal. Les collisions.
     // Chapitre 9 - Détecter les collisions entre GameObject
     //     La façon de réagir à une collision est la responsabilité de la classe GameObject, pas de la classe Game !

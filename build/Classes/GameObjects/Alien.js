@@ -15,33 +15,40 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { GameObject } from "./GameObject.js";
 import { Assets } from "../Assets.js";
+import { Player } from "./Player.js";
 var Alien = /** @class */ (function (_super) {
     __extends(Alien, _super);
     function Alien() {
         //     private speed : number = 1;
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        //     protected start(): void {
-        //         // Définissez l'image de l'alien
-        //         // Codez ici ...
-        //    this.setImage(Assets.getAlienImage());
-        //         this.setPosition({
-        //             x: this.getGame().CANVAS_WIDTH / 2,
-        //             y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 10
-        //         });
-        //         // Faites-le apparaître à une position aléatoire dans le canvas
-        //         // Codez ici ...
-        //     }
-        //     protected update(): void {
-        //         // Faites avancer l'alien vers le bas du Canvas
-        //         // Codez ici ...   
-        //         this.setPosition({
-        //             x : this.getPosition().x += this.speed*Input.getAxisX(),
-        //             y : this.getPosition().y
-        //         })
-        //     }
         _this.speed = 1;
         return _this;
     }
+    //     protected start(): void {
+    //         // Définissez l'image de l'alien
+    //         // Codez ici ...
+    //    this.setImage(Assets.getAlienImage());
+    //         this.setPosition({
+    //             x: this.getGame().CANVAS_WIDTH / 2,
+    //             y: this.getGame().CANVAS_HEIGHT - this.getImage().height - 10
+    //         });
+    //         // Faites-le apparaître à une position aléatoire dans le canvas
+    //         // Codez ici ...
+    //     }
+    //     protected update(): void {
+    //         // Faites avancer l'alien vers le bas du Canvas
+    //         // Codez ici ...   
+    //         this.setPosition({
+    //             x : this.getPosition().x += this.speed*Input.getAxisX(),
+    //             y : this.getPosition().y
+    //         })
+    //     }
+    Alien.prototype.collide = function (other) {
+        if (other instanceof Player) {
+            console.log("Miam Miam !");
+            this.getGame().over();
+        }
+    };
     Alien.prototype.start = function () {
         // Définissez l'image de l'alien
         this.setImage(Assets.getAlienImage());
