@@ -13,6 +13,8 @@ var Game = /** @class */ (function () {
         this.CANVAS_HEIGHT = 600;
         this.nbAliens = 10;
         this.earthLives = 3;
+        this.playerLives = 1;
+        this.alienLives = 1;
         // private boss : Boss;
         // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
         // par la boucle d'événement, il nous faut donc mettre à jour
@@ -38,6 +40,22 @@ var Game = /** @class */ (function () {
         if (this.earthLives <= 0) {
             this.over();
             console.log("le sol/La Terre meurt !!");
+        }
+    };
+    //gestion des vies du player
+    Game.prototype.losePlayerLife = function () {
+        this.playerLives--;
+        if (this.playerLives <= 0) {
+            this.over();
+            console.log("le player  meurt !!");
+        }
+    };
+    //gestion des vies de l'ennemi
+    Game.prototype.loseAlienLife = function () {
+        this.alienLives--;
+        if (this.alienLives <= 0) {
+            this.over();
+            console.log("l'alien  meurt !!");
         }
     };
     Game.prototype.start = function () {
@@ -147,7 +165,17 @@ var Game = /** @class */ (function () {
             _this.context.fillStyle = "white";
             _this.context.font = "24px Arial";
             _this.context.textAlign = "left";
-            _this.context.fillText("".concat(_this.earthLives, " \uD83C\uDF0D"), 340, 430);
+            _this.context.fillText("".concat(_this.earthLives, " \uD83C\uDF0D"), 340, 530);
+            //affichage de la vie du Player
+            _this.context.fillStyle = "white";
+            _this.context.font = "24px Arial";
+            _this.context.textAlign = "right";
+            _this.context.fillText("".concat(_this.playerLives, " \uD83E\uDE96\u2694\uFE0F"), 530, 530);
+            //Affichage vie de l'ennemi
+            _this.context.fillStyle = "white";
+            _this.context.font = "24px Arial";
+            _this.context.textAlign = "left";
+            _this.context.fillText("".concat(_this.nbAliens, " \uD83D\uDEF8"), 30, 90);
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };
     // get du player pour tirer un laser

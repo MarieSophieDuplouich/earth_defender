@@ -30,6 +30,8 @@ export class Game {
     private alien: Alien;
     private nbAliens: number = 10;
     private earthLives : number = 3;
+    private playerLives : number = 1;
+    private alienLives : number = 1;
     private sol: Sol;
  
 
@@ -59,6 +61,28 @@ export class Game {
         console.log("le sol/La Terre meurt !!");
     }
     }
+
+        //gestion des vies du player
+    public losePlayerLife():void{
+    
+     this.playerLives--;
+     if (this.playerLives <= 0) {
+        this.over();
+        console.log("le player  meurt !!");
+    }
+    }
+
+           //gestion des vies de l'ennemi
+    public loseAlienLife():void{
+    
+     this.alienLives--;
+     if (this.alienLives <= 0) {
+        this.over();
+        console.log("l'alien  meurt !!");
+    }
+    }
+
+
     public start(): void {
 
         //sol
@@ -211,7 +235,22 @@ export class Game {
         this.context.fillStyle = "white";
         this.context.font = "24px Arial";
         this.context.textAlign = "left";
-       this.context.fillText(`${this.earthLives} 🌍`, 340, 430);
+       this.context.fillText(`${this.earthLives} 🌍`, 340, 530);
+
+       //affichage de la vie du Player
+
+       this.context.fillStyle = "white";
+        this.context.font = "24px Arial";
+        this.context.textAlign = "right";
+       this.context.fillText(`${this.playerLives} 🪖⚔️`, 530, 530);
+
+       //Affichage vie de l'ennemi
+
+       this.context.fillStyle = "white";
+        this.context.font = "24px Arial";
+        this.context.textAlign = "left";
+       this.context.fillText(`${this.nbAliens} 🛸`, 30, 90);
+
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     }
