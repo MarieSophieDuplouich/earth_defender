@@ -15,21 +15,34 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { GameObject } from "./GameObject.js";
 import { Assets } from "../Assets.js";
+import { Alien } from "./Alien";
 var Laser = /** @class */ (function (_super) {
     __extends(Laser, _super);
     function Laser() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Laser.prototype.start = function () {
-        //laser/ missiles position????
+        //laser/ missiles positions
         this.setImage(Assets.getLaserImage());
         this.setPosition({
-            x: 0,
-            y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 10
+            x: this.getGame().getPlayer().getPosition().x,
+            y: this.getGame().getPlayer().getPosition().y - this.getImage().height
         });
     };
     Laser.prototype.update = function () {
-        // Le sol est fixe, donc rien ici
+        this.setPosition({
+            x: this.getPosition().x,
+            y: this.getPosition().y - 10,
+        });
+        if (this.getPosition().y < 0) {
+            this.getGame().destroy(this);
+        }
+    };
+    Laser.prototype.collide = function (other) {
+        if (other instanceof Alien) {
+            this.getGame().destroy(other);
+            this.getGame().destroy(this);
+        }
     };
     return Laser;
 }(GameObject));
