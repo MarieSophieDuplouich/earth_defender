@@ -1,11 +1,7 @@
 // choses restantes à faire
-//Afficher la Terre	La Terre possède 3 PV	Afficher les PV restants de la Terre.
-//Perte de PV de la Terre	La Terre perd 1 PV si un alien la touche.	
 //Mort du joueur	Le joueur meurt si un alien le touche.	Le jeu recommence.
 //Tir du joueur	Le joueur tire des missiles qui détruisent un alien au contact	Les missiles vont tout droit vers le haut de l'écran. 
 // La touche espace tire un missile. Le joueur peut tirer à une cadence maximale de 200 ms.
-//Vague d'aliens	Faire apparaître de nombreux aliens qui arriveront petit à petit de façon aléatoire.	
-// Il n'y a maximum que 10 aliens en jeu et le nombre d'aliens tués est affiché en haut de l'écran.
 //Bonus SON Joueur	Émettre un son au tir du joueur.
 //     // --- Boucle de jeu --- //
 //     setInterval(() => {
