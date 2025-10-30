@@ -21,7 +21,7 @@ var Alien = /** @class */ (function (_super) {
     function Alien() {
         //     private speed : number = 1;
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.speed = 1;
+        _this.speed = 2;
         return _this;
     }
     //     protected start(): void {
@@ -64,6 +64,11 @@ var Alien = /** @class */ (function (_super) {
             x: this.getPosition().x,
             y: this.getPosition().y += this.speed
         });
+        // si un alien touche la Terre la Terre perd un point de vie  
+        if (this.getPosition().y + this.getImage().height >= this.getGame().CANVAS_HEIGHT - 50) {
+            this.getGame().loseEarthLife();
+            this.getGame().destroy(this); // détruire l'alien
+        }
     };
     return Alien;
 }(GameObject));

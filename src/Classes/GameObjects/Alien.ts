@@ -35,8 +35,10 @@ export class Alien extends GameObject {
             console.log("Miam Miam !")
             this.getGame().over()
         }
+    
+
     }
-    private speed: number = 1;
+    private speed: number = 2;
     protected start(): void {
         // Définissez l'image de l'alien
         this.setImage(Assets.getAlienImage());
@@ -53,7 +55,16 @@ export class Alien extends GameObject {
             x: this.getPosition().x,
             y: this.getPosition().y += this.speed
         })
+
+            // si un alien touche la Terre la Terre perd un point de vie  
+        if (this.getPosition().y + this.getImage().height >= this.getGame().CANVAS_HEIGHT - 50) {
+            this.getGame().loseEarthLife(); 
+            this.getGame().destroy(this);   // détruire l'alien
+        }
     }
+
+
+
 }
 
 // //// ancien code sans poo

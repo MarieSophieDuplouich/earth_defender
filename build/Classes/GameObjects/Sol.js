@@ -32,6 +32,11 @@ var Sol = /** @class */ (function (_super) {
         //         { x: 0, y: CANVAS_HEIGHT - groundImg.height + 90 }
         //         // Je ne peux déplacer comme en css il fau faire ici le -50 pour déplacer le sol
         //     );
+        //         // Affichage des 3 vies de  la Terre ("3 🌍")
+        //         context.fillStyle = "white";
+        //         context.font = "24px Arial";
+        //         context.textAlign = "right";
+        //         context.fillText(`${earthLives} 🌍`, 340, 430);
     };
     Sol.prototype.update = function () {
         // Le sol est fixe, donc rien ici

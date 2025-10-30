@@ -12,8 +12,8 @@ var Game = /** @class */ (function () {
         this.CANVAS_WIDTH = 900;
         this.CANVAS_HEIGHT = 600;
         this.nbAliens = 10;
+        this.earthLives = 3;
         // private boss : Boss;
-        // private sol : Sol;
         // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
         // par la boucle d'événement, il nous faut donc mettre à jour
         //  le code de la fonction Game.start() pour rajouter notre player dans ce tableau.
@@ -30,6 +30,15 @@ var Game = /** @class */ (function () {
     Game.prototype.over = function () {
         alert("GameOver!");
         window.location.reload();
+        //une fenêtre s'ouvre
+    };
+    //gestion des vies du sol
+    Game.prototype.loseEarthLife = function () {
+        this.earthLives--;
+        if (this.earthLives <= 0) {
+            this.over();
+            console.log("le sol/La Terre meurt !!");
+        }
     };
     Game.prototype.start = function () {
         //sol
@@ -37,7 +46,7 @@ var Game = /** @class */ (function () {
         this.instanciate(this.sol);
         this.draw;
         //LA MUSIQUE
-        // Music.startMusic();
+        Music.startMusic();
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
@@ -106,7 +115,7 @@ var Game = /** @class */ (function () {
             _this.alien.callUpdate();
             _this.draw(_this.alien);
             //La Musique du boss
-            Music.startMusicBoss();
+            // Music.startMusicBoss();
             // Pour chaque gameObject
             // Mettez-les à jour et redessinez-les
             // Chapitre 9 - Détecter les collisions entre GameObject
@@ -134,6 +143,11 @@ var Game = /** @class */ (function () {
                     }
                 });
             });
+            // Affichage des 3 vies de  la Terre ("3 🌍")
+            _this.context.fillStyle = "white";
+            _this.context.font = "24px Arial";
+            _this.context.textAlign = "left";
+            _this.context.fillText("".concat(_this.earthLives, " \uD83C\uDF0D"), 340, 430);
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };
     // get du player pour tirer un laser

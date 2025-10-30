@@ -29,10 +29,12 @@ export class Game {
     // +
     private alien: Alien;
     private nbAliens: number = 10;
-    private sol : Sol;
+    private earthLives : number = 3;
+    private sol: Sol;
+ 
 
     // private boss : Boss;
-    // private sol : Sol;
+
 
     // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
     // par la boucle d'événement, il nous faut donc mettre à jour
@@ -42,13 +44,21 @@ export class Game {
     public instanciate(gameObject: GameObject): void {
         this.gameObjects.push(gameObject);
     }
-     
-        public over() : void{
+
+    public over(): void {
         alert("GameOver!")
         window.location.reload();
+        //une fenêtre s'ouvre
     }
-
-
+    //gestion des vies du sol
+    public loseEarthLife():void{
+    
+     this.earthLives--;
+     if (this.earthLives <= 0) {
+        this.over();
+        console.log("le sol/La Terre meurt !!");
+    }
+    }
     public start(): void {
 
         //sol
@@ -56,9 +66,10 @@ export class Game {
         this.instanciate(this.sol);
         this.draw;
 
+
         //LA MUSIQUE
 
-        // Music.startMusic();
+        Music.startMusic();
 
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
@@ -160,7 +171,7 @@ export class Game {
             this.draw(this.alien);
 
             //La Musique du boss
-            Music.startMusicBoss();
+            // Music.startMusicBoss();
 
             // Pour chaque gameObject
             // Mettez-les à jour et redessinez-les
@@ -193,6 +204,14 @@ export class Game {
                     }
                 })
             })
+
+
+
+        // Affichage des 3 vies de  la Terre ("3 🌍")
+        this.context.fillStyle = "white";
+        this.context.font = "24px Arial";
+        this.context.textAlign = "left";
+       this.context.fillText(`${this.earthLives} 🌍`, 340, 430);
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     }

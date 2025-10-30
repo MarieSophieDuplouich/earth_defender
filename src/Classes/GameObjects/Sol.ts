@@ -20,6 +20,13 @@ export class Sol extends GameObject {
 //         // Je ne peux déplacer comme en css il fau faire ici le -50 pour déplacer le sol
 //     );
 
+//         // Affichage des 3 vies de  la Terre ("3 🌍")
+//         context.fillStyle = "white";
+//         context.font = "24px Arial";
+//         context.textAlign = "right";
+//         context.fillText(`${earthLives} 🌍`, 340, 430);
+
+
 }
 
   protected update(): void {

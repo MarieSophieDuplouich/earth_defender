@@ -45,11 +45,6 @@
 //         context.font = "24px Arial";
 //         context.textAlign = "center";
 //         context.fillText(`${livesPlayer} ❤️`, CANVAS_WIDTH / 2, ground.position.y - 20);
-//         // Affichage des 3 vies de  la Terre ("3 🌍")
-//         context.fillStyle = "white";
-//         context.font = "24px Arial";
-//         context.textAlign = "right";
-//         context.fillText(`${earthLives} 🌍`, 340, 430);
 //              // ennemis killed lives position
 //             //Si 15 ennemis  tués le joueur passe devant le boss ça après
 //         // context.drawImage(
