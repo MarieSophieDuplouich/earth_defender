@@ -43,6 +43,8 @@ var GameObject = /** @class */ (function () {
     };
     ////dernière partie du cours de Massi Partie 4 - Aïe, ça fait mal. Les collisions.
     // Chapitre 9 - Détecter les collisions entre GameObject
+    //     La façon de réagir à une collision est la responsabilité de la classe GameObject, pas de la classe Game !
+    // Mettez à jour le contenu du forEach dans Game.loop() pour appeler une méthode GameObject.collide(other : GameObject) quand un GameObject chevauche un autre GameObject :
     GameObject.prototype.overlap = function (other) {
         if (
         // Check x axis overlap
@@ -85,6 +87,9 @@ var GameObject = /** @class */ (function () {
     return GameObject;
 }());
 export { GameObject };
+// Exercice 15
+// Mettez en place une méthode protected GameObject.collide(other:GameObject) dans la classe GameObject et sa méthode publique callCollide(other:GameObject), puis implémentez-la dans la classe Alien pour écrire "Miam Miam" dans la console quand il touche le joueur.
+// Affichez un message GameOver! via un alert() quand l'alien mange le joueur.
 // La méthode GameObject.update permet maintenant à n'importe quel GameObject d'effectuer des actions à chaque frame.
 // C'est une partie centrale de notre jeu.
 // Effectuer une action à chaque frame

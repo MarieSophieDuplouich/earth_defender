@@ -155,15 +155,30 @@ export class Game {
 
             // Dans la boucle d'événements, j'ai actuellement une boucle for qui dessine tous les GameObjects.
             //Pour commencer, on peut vérifier si un alien touche le joueur.
-            this.gameObjects.forEach(go => {
-                go.callUpdate();
-                this.draw(go);
-                //Je dois donc créer une méthode overlap ...
-               // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
-                if (go instanceof Alien && this.player.overlap(go)) {
-                    console.log("Alien touche le joueur");
+            // this.gameObjects.forEach(go => {
+            //     go.callUpdate();
+            //     this.draw(go);
+            //     //Je dois donc créer une méthode overlap ...
+            //    // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
+            //     if (go instanceof Alien && this.player.overlap(go)) {
+            //         console.log("Alien touche le joueur");
+            //     }
+                
+            // })
+
+                   this.gameObjects.forEach(go=>{
+            go.callUpdate();
+            this.draw(go);
+            
+            this.gameObjects.forEach(other=>{
+                // +
+                // Si le gameObject chevauche un gameObject qui n'est pas lui-même
+                if(other != go && go.overlap(other)){
+                    console.log("Deux GameObject différents se touchent");
+                    go.callCollide(other); // J'appelle la méthode collide de mon GameObject
                 }
             })
+        })
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     }
@@ -171,5 +186,3 @@ export class Game {
 }
 
 
-
-        
