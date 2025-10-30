@@ -60,10 +60,19 @@ var Music = /** @class */ (function () {
             this.isPlayingBoss = false;
         }
     };
+    // quand je tire un missile la musique s'active
+    Music.shootMusiquesLaser = function () {
+        if (this.shootMusicsound) {
+            this.shootMusicsound.currentTime = 0; // redémarre le son
+            this.shootMusicsound.volume = 0.5;
+            this.shootMusicsound.play();
+        }
+    };
     Music.bossMusic = document.getElementById('boss-music');
     Music.bgMusic = document.getElementById('bg-music');
     Music.isPlaying = false;
     Music.isPlayingBoss = false;
+    Music.shootMusicsound = document.getElementById('shoot-music');
     return Music;
 }());
 export { Music };

@@ -16,7 +16,7 @@
 //     document.addEventListener('keydown', startMusic);
 //     document.addEventListener('click', startMusic);
 
-import { Alien } from "./GameObjects/Alien";
+import { Alien } from "./GameObjects/Alien.js";
 
 // </script>
 
@@ -30,6 +30,7 @@ export class Music {
    private static bgMusic: HTMLAudioElement = document.getElementById('bg-music') as HTMLAudioElement;
    private static isPlaying: boolean = false;
    private static isPlayingBoss: boolean = false;
+   private static shootMusicsound : HTMLAudioElement = document.getElementById('shoot-music') as HTMLAudioElement;
 
 
     // méthode "static" : ajoute less écouteurs d'évènments
@@ -85,7 +86,15 @@ export class Music {
         }
 
     }
+    // quand je tire un missile la musique s'active
 
+      public static shootMusiquesLaser() {
+         if (this.shootMusicsound) {
+        this.shootMusicsound.currentTime = 0; // redémarre le son
+        this.shootMusicsound.volume = 0.5;
+        this.shootMusicsound.play();
+    }
+    }
 
 }
 

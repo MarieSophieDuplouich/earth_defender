@@ -39,6 +39,9 @@ var Input = /** @class */ (function () {
     Input.getAxisX = function () {
         return this.axisX;
     };
+    Input.getIsShooting = function () {
+        return Input.isShooting;
+    };
     Input.listen = function () {
         window.addEventListener("keydown", function (event) {
             switch (event.key) {
@@ -49,6 +52,15 @@ var Input = /** @class */ (function () {
                 case "q":
                 case "Q":
                     Input.axisX = -1;
+                    break;
+                case " ":
+                    Input.isShooting = true;
+                    break;
+                // //touche p pause enfoncée
+                case "p":
+                case "P":
+                    // je mets quoi ici ?
+                    Input.isPaused = true;
                     break;
                 default:
                     break;
@@ -61,6 +73,27 @@ var Input = /** @class */ (function () {
                 case "q":
                 case "Q":
                     Input.axisX = 0;
+                    //   case"p":
+                    //     case"P":
+                    //      // je mets quoi ici ?
+                    //   case " ":
+                    // Tirer un missile
+                    // missiles.push(new GameObject(
+                    //     missileImg,
+                    //     {
+                    //         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
+                    //         y: playerPos.y - missileImg.height
+                    //     }
+                    // ));
+                    // shootMusiquesLaser();
+                    break;
+                case " ":
+                    Input.isShooting = false;
+                    break;
+                case "p":
+                case "P":
+                    // je mets quoi ici ?
+                    Input.isPaused = false;
                     break;
                 default:
                     break;
@@ -68,6 +101,7 @@ var Input = /** @class */ (function () {
         });
     };
     Input.axisX = 0;
+    Input.isShooting = false;
     return Input;
 }());
 export { Input };

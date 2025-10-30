@@ -45,6 +45,13 @@ export class Input{
     public static getAxisX() : Direction{
         return this.axisX;
     }
+
+    private static isShooting : boolean = false;
+    
+    public static getIsShooting() : boolean {
+        return Input.isShooting;
+    }
+
     public static listen(){
           window.addEventListener("keydown", (event) => {
         switch (event.key) {
@@ -58,6 +65,18 @@ export class Input{
             case "Q":
               Input.axisX = -1;
                 break;
+              case " ":
+                    Input.isShooting = true;
+                    break;
+                // //touche p pause enfoncée
+
+                case"p":
+                case"P":
+                 // je mets quoi ici ?
+                 Input.isPaused =true;
+                break;
+
+
             default:
                 break;
         }
@@ -71,8 +90,29 @@ export class Input{
             case "q":
             case "Q":
                 Input.axisX = 0;
+            //   case"p":
+            //     case"P":
+            //      // je mets quoi ici ?
+            //   case " ":
+                // Tirer un missile
+                // missiles.push(new GameObject(
+                //     missileImg,
+                //     {
+                //         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
+                //         y: playerPos.y - missileImg.height
+                //     }
+                // ));
+                // shootMusiquesLaser();
+             
                 break;
-
+                case " ":
+                    Input.isShooting = false;
+                    break;
+            case"p":
+                case"P":
+                 // je mets quoi ici ?
+                 Input.isPaused = false;
+                break;
             default:
                 break;
         }

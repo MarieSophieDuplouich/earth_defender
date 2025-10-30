@@ -31,7 +31,7 @@ export class Game {
     private nbAliens: number = 10;
     private earthLives : number = 3;
     private playerLives : number = 1;
-    private alienLives : number = 1;
+    // private alienLives : number = 1;
     private sol: Sol;
  
 
@@ -75,8 +75,8 @@ export class Game {
            //gestion des vies de l'ennemi
     public loseAlienLife():void{
     
-     this.alienLives--;
-     if (this.alienLives <= 0) {
+     this.nbAliens--;
+     if (this.nbAliens <= 0) {
         this.over();
         console.log("l'alien  meurt !!");
     }

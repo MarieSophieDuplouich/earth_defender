@@ -34,3 +34,47 @@
 
 
 
+////////////////////
+
+
+//     // quand je tire un missile la musique s'active
+
+//     const shootMusicsound = document.getElementById('shoot-music') as HTMLAudioElement;
+//     function shootMusiques() {
+//         if (shootMusicsound.paused) {
+//             shootMusicsound.currentTime = 0;
+//             shootMusicsound.volume = 0.5;
+//             shootMusicsound.play();
+//         } else {
+
+//             shootMusicsound.currentTime = 0;
+//         }
+
+//         document.addEventListener('keydown', shootMusiques);
+//     }
+
+//     document.addEventListener("keydown", (event) => {
+//         if (gameOver) return; // Bloque le contrôle après game over
+
+//         switch (event.key) {
+//             case "d":
+//             case "D":
+//                 direction = 1;
+//                 break;
+//             case "q":
+//             case "Q":
+//                 direction = -1;
+//                 break;
+//             case " ":
+//                 // Tirer un missile
+//                 missiles.push(new GameObject(
+//                     missileImg,
+//                     {
+//                         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
+//                         y: playerPos.y - missileImg.height
+//                     }
+//                 ));
+//                 shootMusiques();
+//                 break;
+//         }
+//     });

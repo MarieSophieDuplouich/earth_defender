@@ -14,7 +14,6 @@ var Game = /** @class */ (function () {
         this.nbAliens = 10;
         this.earthLives = 3;
         this.playerLives = 1;
-        this.alienLives = 1;
         // private boss : Boss;
         // Tous les GameObject doivent être contenus dans le tableau de GameObjects pour être détectés 
         // par la boucle d'événement, il nous faut donc mettre à jour
@@ -52,8 +51,8 @@ var Game = /** @class */ (function () {
     };
     //gestion des vies de l'ennemi
     Game.prototype.loseAlienLife = function () {
-        this.alienLives--;
-        if (this.alienLives <= 0) {
+        this.nbAliens--;
+        if (this.nbAliens <= 0) {
             this.over();
             console.log("l'alien  meurt !!");
         }
