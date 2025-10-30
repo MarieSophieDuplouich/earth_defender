@@ -3,17 +3,6 @@
 //Tir du joueur	Le joueur tire des missiles qui détruisent un alien au contact	Les missiles vont tout droit vers le haut de l'écran. 
 // La touche espace tire un missile. Le joueur peut tirer à une cadence maximale de 200 ms.
 //Bonus SON Joueur	Émettre un son au tir du joueur.
-//     // --- Boucle de jeu --- //
-//     setInterval(() => {
-//         // Sol
-//         context.drawImage(
-//             ground.image,
-//             ground.position.x,
-//             ground.position.y,
-//             ground.image.width,
-//             ground.image.height
-//         );
-//             );
 //             // Collision alien ↔ sol
 //             if (alien.position.y + alien.image.height >= ground.position.y) {
 //                 earthLives = Math.max(0, earthLives - 1);
@@ -36,22 +25,3 @@
 //                 }
 //             }
 //         }
-//         // Affichage des vies ("10 ❤️")
-//         context.fillStyle = "white";
-//         context.font = "24px Arial";
-//         context.textAlign = "center";
-//         context.fillText(`${livesPlayer} ❤️`, CANVAS_WIDTH / 2, ground.position.y - 20);
-//              // ennemis killed lives position
-//             //Si 15 ennemis  tués le joueur passe devant le boss ça après
-//         // context.drawImage(
-//         //     ennemiKilled.image,
-//         //     ennemiKilled.position.x,
-//         //     ennemiKilled.position.y,
-//         //     ennemiKilled.image.width,
-//         //     ennemiKilled.image.height
-//         // );
-//         // Affichage des 15 vies des aliens ("15 👽 ")
-//         context.fillStyle = "white";
-//         context.font = "24px Arial";
-//         context.textAlign = "right";
-//         context.fillText(`${ennemiSkilledlive} ennemiKilled`, 100, 70);

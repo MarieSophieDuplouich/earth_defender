@@ -62,6 +62,13 @@ public static getSolImage() : HTMLImageElement{
     return image;
 }
 
+//Misiles/laser
+public static getLaserImage() : HTMLImageElement{
+    const image: HTMLImageElement = document.querySelector("img.missile");
+    if(image == null) throw Error("No ground asset found");
+
+    return image;
+}
 
 }
 

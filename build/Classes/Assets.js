@@ -54,6 +54,13 @@ var Assets = /** @class */ (function () {
             throw Error("No ground asset found");
         return image;
     };
+    //Misiles/laser
+    Assets.getLaserImage = function () {
+        var image = document.querySelector("img.missile");
+        if (image == null)
+            throw Error("No ground asset found");
+        return image;
+    };
     return Assets;
 }());
 export { Assets };
