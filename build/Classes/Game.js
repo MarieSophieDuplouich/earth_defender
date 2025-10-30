@@ -107,11 +107,11 @@ var Game = /** @class */ (function () {
             _this.gameObjects.forEach(function (go) {
                 go.callUpdate();
                 _this.draw(go);
-                // Je dois donc créer une méthode overlap ...
-                //Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
-                // if (go instanceof Alien && this.player.overlap(go)) {
-                //     console.log("Alien touche le joueur");
-                // }
+                //Je dois donc créer une méthode overlap ...
+                // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
+                if (go instanceof Alien && _this.player.overlap(go)) {
+                    console.log("Alien touche le joueur");
+                }
             });
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     };

@@ -33,15 +33,15 @@ import { Alien } from "../GameObjects/Alien.js";
 
 
 export class GameObject {
-    
-   
+
+
     private position: Position;
     private image: HTMLImageElement;
     private game: Game;
 
 
     constructor(game: Game) {
-       
+
         this.position = {
             x: 0,
             y: 0
@@ -87,12 +87,68 @@ export class GameObject {
 
     }
 
-protected update(){}
-public callUpdate(){
-    this.update();
-}
+    protected update() { }
+    public callUpdate() {
+        this.update();
+    }
+    
+
+    ////dernière partie du cours de Massi Partie 4 - Aïe, ça fait mal. Les collisions.
+    // Chapitre 9 - Détecter les collisions entre GameObject
+      
+
+    public overlap(other: GameObject): boolean {
+        if (
+            // Check x axis overlap
+            (
+                other.left() <= this.left() && this.left() <= other.right()
+                ||
+                other.left() <= this.right() && this.right() <= other.right()
+                ||
+                this.left() <= other.left() && other.left() <= this.right()
+                ||
+                this.left() <= other.right() && other.right() <= this.right()
+            )
+            &&
+            (
+                // check y axis overlap
+                other.top() <= this.top() && this.top() <= other.bottom()
+                ||
+                other.top() <= this.bottom() && this.bottom() <= other.bottom()
+                ||
+                this.top() <= other.top() && other.top() <= this.bottom()
+                ||
+                this.top() <= other.bottom() && other.bottom() <= this.bottom()
+            )
+        ) {
+            return true;        // They overlap
+        }
+        else {
+            return false;       // They do not overlap
+        }
+    }
+
+    /**Utility methods for gameobject position */
+    public top(): number {
+        return this.position.y;
+    }
+    public bottom(): number {
+        return this.position.y + this.image.height;
+    }
+    public left(): number {
+        return this.position.x;
+    }
+    public right(): number {
+        return this.position.x + this.image.width;
+    }
+
+
 
 }
+
+
+
+
 
 // La méthode GameObject.update permet maintenant à n'importe quel GameObject d'effectuer des actions à chaque frame.
 

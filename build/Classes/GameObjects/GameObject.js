@@ -41,6 +41,47 @@ var GameObject = /** @class */ (function () {
     GameObject.prototype.callUpdate = function () {
         this.update();
     };
+    ////dernière partie du cours de Massi Partie 4 - Aïe, ça fait mal. Les collisions.
+    // Chapitre 9 - Détecter les collisions entre GameObject
+    GameObject.prototype.overlap = function (other) {
+        if (
+        // Check x axis overlap
+        (other.left() <= this.left() && this.left() <= other.right()
+            ||
+                other.left() <= this.right() && this.right() <= other.right()
+            ||
+                this.left() <= other.left() && other.left() <= this.right()
+            ||
+                this.left() <= other.right() && other.right() <= this.right())
+            &&
+                (
+                // check y axis overlap
+                other.top() <= this.top() && this.top() <= other.bottom()
+                    ||
+                        other.top() <= this.bottom() && this.bottom() <= other.bottom()
+                    ||
+                        this.top() <= other.top() && other.top() <= this.bottom()
+                    ||
+                        this.top() <= other.bottom() && other.bottom() <= this.bottom())) {
+            return true; // They overlap
+        }
+        else {
+            return false; // They do not overlap
+        }
+    };
+    /**Utility methods for gameobject position */
+    GameObject.prototype.top = function () {
+        return this.position.y;
+    };
+    GameObject.prototype.bottom = function () {
+        return this.position.y + this.image.height;
+    };
+    GameObject.prototype.left = function () {
+        return this.position.x;
+    };
+    GameObject.prototype.right = function () {
+        return this.position.x + this.image.width;
+    };
     return GameObject;
 }());
 export { GameObject };
