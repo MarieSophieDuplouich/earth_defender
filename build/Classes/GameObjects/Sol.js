@@ -25,7 +25,7 @@ var Sol = /** @class */ (function (_super) {
         this.setImage(Assets.getSolImage());
         this.setPosition({
             x: 0,
-            y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 30
+            y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 10
         });
         //     const ground = new GameObject(
         //         groundImg,

@@ -10,7 +10,7 @@ export class Sol extends GameObject {
         this.setImage(Assets.getSolImage());
         this.setPosition({
            x  :  0,
-            y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 30
+           y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 10
 
         })
 //     const ground = new GameObject(
