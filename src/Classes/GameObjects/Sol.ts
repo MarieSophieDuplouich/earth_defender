@@ -1,4 +1,39 @@
-//     const groundImg: HTMLImageElement = document.querySelector("img.sol");
+import { GameObject } from "./GameObject.js";
+import { Assets } from "../Assets.js";
+
+export class Sol extends GameObject {
+
+    protected start(): void {
+
+        //sol le positionner dans le canva
+
+        this.setImage(Assets.getSolImage());
+        this.setPosition({
+           x  :  0,
+            y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 30
+
+        })
+//     const ground = new GameObject(
+//         groundImg,
+//         { x: 0, y: CANVAS_HEIGHT - groundImg.height + 90 }
+
+//         // Je ne peux déplacer comme en css il fau faire ici le -50 pour déplacer le sol
+//     );
+
+}
+
+  protected update(): void {
+        // Le sol est fixe, donc rien ici
+    }
+}
+
+
+
+
+
+
+
+
 
 //     const ground = new GameObject(
 //         groundImg,
@@ -24,12 +59,7 @@
 
 
 
-//     const ground = new GameObject(
-//         groundImg,
-//         { x: 0, y: CANVAS_HEIGHT - groundImg.height + 90 }
 
-//         // Je ne peux déplacer comme en css il fau faire ici le -50 pour déplacer le sol
-//     );
 
 
 //     // Génération initiale d’aliens

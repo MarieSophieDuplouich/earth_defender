@@ -47,7 +47,7 @@ var GameObject = /** @class */ (function () {
     // Mettez à jour le contenu du forEach dans Game.loop() pour appeler une méthode GameObject.collide(other : GameObject) quand un GameObject chevauche un autre GameObject :
     GameObject.prototype.overlap = function (other) {
         if (
-        // Check x axis overlap
+        // Check x axis overlap// là il faut m'expliquer 
         (other.left() <= this.left() && this.left() <= other.right()
             ||
                 other.left() <= this.right() && this.right() <= other.right()
@@ -89,7 +89,7 @@ var GameObject = /** @class */ (function () {
 export { GameObject };
 // Exercice 15
 // Mettez en place une méthode protected GameObject.collide(other:GameObject) dans la classe GameObject et sa méthode publique callCollide(other:GameObject), puis implémentez-la dans la classe Alien pour écrire "Miam Miam" dans la console quand il touche le joueur.
-// Affichez un message GameOver! via un alert() quand l'alien mange le joueur.
+// Affichez un message GameOver! via un alert() quand l'alien mange le joueur. // je vais direct au chapitre 11 car je pense pour le collide il y a un code object plus simple
 // La méthode GameObject.update permet maintenant à n'importe quel GameObject d'effectuer des actions à chaque frame.
 // C'est une partie centrale de notre jeu.
 // Effectuer une action à chaque frame

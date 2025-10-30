@@ -4,6 +4,7 @@ import { Input } from "./Input.js";
 import { Music } from "./Music.js";
 import { Alien } from "./GameObjects/Alien.js";
 import { Star } from "./GameObjects/Star.js";
+import { Sol } from "./GameObjects/Sol.js";
 //J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
 // D'après Massi, je dois le mettre dans la méthode start()
 var Game = /** @class */ (function () {
@@ -27,8 +28,12 @@ var Game = /** @class */ (function () {
         this.gameObjects.push(gameObject);
     };
     Game.prototype.start = function () {
+        //sol
+        this.sol = new Sol(this); // je pense pas qu'il y ait un intérêt car il y a un sol
+        this.instanciate(this.sol);
+        this.draw;
         //LA MUSIQUE
-        Music.startMusic();
+        // Music.startMusic();
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
@@ -116,17 +121,39 @@ var Game = /** @class */ (function () {
             _this.gameObjects.forEach(function (go) {
                 go.callUpdate();
                 _this.draw(go);
-                _this.gameObjects.forEach(function (other) {
-                    // +
-                    // Si le gameObject chevauche un gameObject qui n'est pas lui-même
-                    if (other != go && go.overlap(other)) {
-                        console.log("Deux GameObject différents se touchent");
-                        go.callCollide(other); // J'appelle la méthode collide de mon GameObject
-                    }
-                });
+                // this.gameObjects.forEach(other => {
+                //     // +
+                //     // Si le gameObject chevauche un gameObject qui n'est pas lui-même
+                //     if (other != go && go.overlap(other)) {
+                //         console.log("Deux GameObject différents se touchent");
+                //         go.callCollide(other); // J'appelle la méthode collide de mon GameObject
+                //     }
+                // })
             });
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
+    };
+    // get du player pour tirer un laser
+    Game.prototype.getPlayer = function () {
+        return this.player;
+    };
+    Game.prototype.destroy = function (gameObject) {
+        // Codez ici ...
+        // Supprimer gameObject du tableau de gameObjects
+        this.gameObjects = this.gameObjects.filter(function (go) { return go != gameObject; });
     };
     return Game;
 }());
 export { Game };
+// Exercice 16 - Détruire un gameObject
+// Supprimez gameObject du tableau de gameObjects à l'appel de Game.destroy() class Game
+// public destroy(gameObject : GameObject) : void{
+//     // Codez ici ...
+//     // Supprimer gameObject du tableau de gameObjects
+// }
+// Chapitre 11 - Tirer un Laser.
+// Pour tirer un laser, nous allons avoir besoin de la position du joueur dans une future classe Laser.
+// Ajoutez donc un getter de Player dans Game.
+// class Game
+// public getPlayer() : Player{
+//     return this.player;
+// }

@@ -4,6 +4,7 @@ import { Input } from "./Input.js";
 import { Music } from "./Music.js";
 import { Alien } from "./GameObjects/Alien.js";
 import { Star } from "./GameObjects/Star.js";
+import { Sol } from "./GameObjects/Sol.js";
 
 
 //J'ai mis le "import Music.ts" Musique ici car quand le joueur bouge le jeu commence
@@ -14,6 +15,7 @@ export class Game {
     private context: CanvasRenderingContext2D;
     public readonly CANVAS_WIDTH: number = 900;
     public readonly CANVAS_HEIGHT: number = 600;
+
 
     constructor() {
         // Init Game canvas
@@ -27,6 +29,7 @@ export class Game {
     // +
     private alien: Alien;
     private nbAliens: number = 10;
+    private sol : Sol;
 
     // private boss : Boss;
     // private sol : Sol;
@@ -42,9 +45,15 @@ export class Game {
 
 
     public start(): void {
+
+        //sol
+        this.sol = new Sol(this); // je pense pas qu'il y ait un intérêt car il y a un sol
+        this.instanciate(this.sol);
+        this.draw;
+
         //LA MUSIQUE
 
-        Music.startMusic();
+        // Music.startMusic();
 
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
@@ -145,9 +154,9 @@ export class Game {
             this.alien.callUpdate();
             this.draw(this.alien);
 
-             //La Musique du boss
-              Music.startMusicBoss();
-              
+            //La Musique du boss
+            Music.startMusicBoss();
+
             // Pour chaque gameObject
             // Mettez-les à jour et redessinez-les
             // Chapitre 9 - Détecter les collisions entre GameObject
@@ -163,26 +172,56 @@ export class Game {
             //     if (go instanceof Alien && this.player.overlap(go)) {
             //         console.log("Alien touche le joueur");
             //     }
-                
+
             // })
 
-                   this.gameObjects.forEach(go=>{
-            go.callUpdate();
-            this.draw(go);
-            
-            this.gameObjects.forEach(other=>{
-                // +
-                // Si le gameObject chevauche un gameObject qui n'est pas lui-même
-                if(other != go && go.overlap(other)){
-                    console.log("Deux GameObject différents se touchent");
-                    go.callCollide(other); // J'appelle la méthode collide de mon GameObject
-                }
+            this.gameObjects.forEach(go => {
+                go.callUpdate();
+                this.draw(go);
+
+                // this.gameObjects.forEach(other => {
+                //     // +
+                //     // Si le gameObject chevauche un gameObject qui n'est pas lui-même
+                //     if (other != go && go.overlap(other)) {
+                //         console.log("Deux GameObject différents se touchent");
+                //         go.callCollide(other); // J'appelle la méthode collide de mon GameObject
+                //     }
+                // })
             })
-        })
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
     }
 
+
+    // get du player pour tirer un laser
+
+    public getPlayer(): Player {
+        return this.player;
+    }
+
+    public destroy(gameObject: GameObject): void {
+        // Codez ici ...
+        // Supprimer gameObject du tableau de gameObjects
+        this.gameObjects = this.gameObjects.filter(go => go != gameObject);
+
+    }
 }
+// Exercice 16 - Détruire un gameObject
+// Supprimez gameObject du tableau de gameObjects à l'appel de Game.destroy() class Game
 
+// public destroy(gameObject : GameObject) : void{
+//     // Codez ici ...
+//     // Supprimer gameObject du tableau de gameObjects
 
+// }
+
+// Chapitre 11 - Tirer un Laser.
+// Pour tirer un laser, nous allons avoir besoin de la position du joueur dans une future classe Laser.
+
+// Ajoutez donc un getter de Player dans Game.
+
+// class Game
+
+// public getPlayer() : Player{
+//     return this.player;
+// }
