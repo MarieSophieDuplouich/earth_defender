@@ -38,7 +38,7 @@
 // Astuce : Utilisez window.addEventListener("keydown", (event) => { ... }) pour écouter les événements clavier. Utilisez event.key pour savoir quelle touche a été pressée. utilisez aussi window.addEventListener("keyup", (event) => { ... }) pour écouter le relâchement des touches.
 
 // /src/Classes/Input.ts
-
+import { Assets } from "./Assets.js";
 export class Input {
     private static axisX: Direction = 0;
     private static isPaused = false;
@@ -61,13 +61,17 @@ export class Input {
     }
 
     // laser missile musique
-    private static laserMusic: boolean = false;
+    // private static laserMusic: boolean = false;
 
-    public static getshootMusiques(): boolean {
-        return Input.laserMusic;
-    }
+    // public static getshootMusiques(): boolean {
+    //     return Input.laserMusic;
+    // }
 
-    //  private static laserSound: HTMLAudioElement = Assets.getshootMusiques();
+     private static laserMusic: HTMLAudioElement = Assets.getshootMusicsound();
+    // public static getshootMusiques(): boolean {
+    //     return Input.laserMusic;
+    // }
+
 
     public static listen() {
         window.addEventListener("keydown", (event) => {
@@ -86,11 +90,15 @@ export class Input {
                 //barre d'espace lance un missile
                 case " ":
                     Input.isShooting = !Input.isShooting;
-                    Input.laserMusic = !Input.laserMusic;
+                    // Input.laserMusic = !Input.laserMusic;
 
                     // this.laserMusic.currentTime = 0;
                     // this.laserMusic.volume = 0.5;
                     // this.laserMusic.play();
+                      this.laserMusic.currentTime = 0;
+                    this.laserMusic.volume = 0.5;
+                    this.laserMusic.play();
+
 
                     console.log("je tire");
                     break;

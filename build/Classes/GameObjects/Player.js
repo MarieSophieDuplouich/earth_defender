@@ -35,8 +35,7 @@ var Player = /** @class */ (function (_super) {
             return;
         if (Input.getIsShooting())
             return;
-        if (Input.getshootMusiques())
-            return;
+        // if(Input.getshootMusiques())return;
         this.setPosition({
             x: this.getPosition().x += this.speed * Input.getAxisX(),
             y: this.getPosition().y

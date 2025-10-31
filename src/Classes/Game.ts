@@ -95,6 +95,8 @@ export class Game {
 
         //La musique du laser/missile ici ?
 
+        // Input.getshootMusiques();
+
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);

@@ -20,7 +20,7 @@ export class Player extends GameObject {
 
     if (Input.getPause()) return;
     if (Input.getIsShooting()) return;
-    if(Input.getshootMusiques())return;
+    // if(Input.getshootMusiques())return;
 
 
         this.setPosition({

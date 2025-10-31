@@ -32,6 +32,7 @@
 // Si le joueur appuie sur q ou Q axisX est égal à -1
 // Astuce : Utilisez window.addEventListener("keydown", (event) => { ... }) pour écouter les événements clavier. Utilisez event.key pour savoir quelle touche a été pressée. utilisez aussi window.addEventListener("keyup", (event) => { ... }) pour écouter le relâchement des touches.
 // /src/Classes/Input.ts
+import { Assets } from "./Assets.js";
 var Input = /** @class */ (function () {
     function Input() {
     }
@@ -47,11 +48,11 @@ var Input = /** @class */ (function () {
     Input.getPause = function () {
         return Input.isPaused;
     };
-    Input.getshootMusiques = function () {
-        return Input.laserMusic;
-    };
-    //  private static laserSound: HTMLAudioElement = Assets.getshootMusiques();
+    // public static getshootMusiques(): boolean {
+    //     return Input.laserMusic;
+    // }
     Input.listen = function () {
+        var _this = this;
         window.addEventListener("keydown", function (event) {
             switch (event.key) {
                 case "d":
@@ -65,10 +66,13 @@ var Input = /** @class */ (function () {
                 //barre d'espace lance un missile
                 case " ":
                     Input.isShooting = !Input.isShooting;
-                    Input.laserMusic = !Input.laserMusic;
+                    // Input.laserMusic = !Input.laserMusic;
                     // this.laserMusic.currentTime = 0;
                     // this.laserMusic.volume = 0.5;
                     // this.laserMusic.play();
+                    _this.laserMusic.currentTime = 0;
+                    _this.laserMusic.volume = 0.5;
+                    _this.laserMusic.play();
                     console.log("je tire");
                     break;
                 //touche p pause enfoncée
@@ -98,7 +102,11 @@ var Input = /** @class */ (function () {
     Input.isPaused = false;
     Input.isShooting = false;
     // laser missile musique
-    Input.laserMusic = false;
+    // private static laserMusic: boolean = false;
+    // public static getshootMusiques(): boolean {
+    //     return Input.laserMusic;
+    // }
+    Input.laserMusic = Assets.getshootMusicsound();
     return Input;
 }());
 export { Input };
