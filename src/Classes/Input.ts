@@ -55,18 +55,19 @@ export class Input {
         return Input.isShooting;
     }
 
-
-
     // la pause
     public static getPause(): boolean {
         return Input.isPaused;
     }
 
+    // laser missile musique
+    private static laserMusic: boolean = false;
 
-    public static shootMusiques() {
+    public static getshootMusiques(): boolean {
         return Input.laserMusic;
     }
 
+    //  private static laserSound: HTMLAudioElement = Assets.getshootMusiques();
 
     public static listen() {
         window.addEventListener("keydown", (event) => {
@@ -85,11 +86,12 @@ export class Input {
                 //barre d'espace lance un missile
                 case " ":
                     Input.isShooting = !Input.isShooting;
-                     Input.laserMusic = !Input.laserMusic;
+                    Input.laserMusic = !Input.laserMusic;
 
-                    this.currentTime = 0;
-                    this.volume = 0.5;
-                    this.play();
+                    // this.laserMusic.currentTime = 0;
+                    // this.laserMusic.volume = 0.5;
+                    // this.laserMusic.play();
+
                     console.log("je tire");
                     break;
                 //touche p pause enfoncée

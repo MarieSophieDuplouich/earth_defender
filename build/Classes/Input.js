@@ -47,11 +47,11 @@ var Input = /** @class */ (function () {
     Input.getPause = function () {
         return Input.isPaused;
     };
-    Input.shootMusiques = function () {
+    Input.getshootMusiques = function () {
         return Input.laserMusic;
     };
+    //  private static laserSound: HTMLAudioElement = Assets.getshootMusiques();
     Input.listen = function () {
-        var _this = this;
         window.addEventListener("keydown", function (event) {
             switch (event.key) {
                 case "d":
@@ -66,9 +66,9 @@ var Input = /** @class */ (function () {
                 case " ":
                     Input.isShooting = !Input.isShooting;
                     Input.laserMusic = !Input.laserMusic;
-                    _this.currentTime = 0;
-                    _this.volume = 0.5;
-                    _this.play();
+                    // this.laserMusic.currentTime = 0;
+                    // this.laserMusic.volume = 0.5;
+                    // this.laserMusic.play();
                     console.log("je tire");
                     break;
                 //touche p pause enfoncée
@@ -97,6 +97,8 @@ var Input = /** @class */ (function () {
     Input.axisX = 0;
     Input.isPaused = false;
     Input.isShooting = false;
+    // laser missile musique
+    Input.laserMusic = false;
     return Input;
 }());
 export { Input };

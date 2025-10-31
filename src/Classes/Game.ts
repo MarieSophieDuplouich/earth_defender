@@ -160,24 +160,6 @@ export class Game {
             this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
             this.context.fillStyle = "#141414";
             this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-
-
-            // Je mets à jour le joueur
-            // this.player.callUpdate();
-
-            // Je redessine le joueur à chaque frame
-            // this.draw(this.player);
-
-            //La Musique du boss
-            // Music.startMusicBoss();
-
-            // Pour chaque gameObject
-            // Mettez-les à jour et redessinez-les
-            // Chapitre 9 - Détecter les collisions entre GameObject
-            // Pour détecter une collision, il faut savoir si un GameObject est en contact avec un autre.
-
-            // Dans la boucle d'événements, j'ai actuellement une boucle for qui dessine tous les GameObjects.
-            //Pour commencer, on peut vérifier si un alien touche le joueur.
             this.gameObjects.forEach(go => {
                 go.callUpdate();
                 this.draw(go);
