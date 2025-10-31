@@ -14,11 +14,21 @@ export class Player extends GameObject {
         });
 
     }
+
+    
  protected update(): void {
+
+    if (Input.getPause()) return;
+
+    
         this.setPosition({
             x : this.getPosition().x += this.speed*Input.getAxisX(),
             y : this.getPosition().y
         })
+
+        //  if (Input.isShooting()) {
+    //     // this.fire();
+    // }
     }
 
 }

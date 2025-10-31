@@ -1,4 +1,3 @@
-import { GameObject } from "./GameObjects/GameObject.js";
 import { Player } from "./GameObjects/Player.js";
 import { Input } from "./Input.js";
 import { Music } from "./Music.js";
@@ -11,6 +10,7 @@ var Game = /** @class */ (function () {
     function Game() {
         this.CANVAS_WIDTH = 900;
         this.CANVAS_HEIGHT = 600;
+        // +
         this.nbAliens = 10;
         this.earthLives = 3;
         this.playerLives = 1;
@@ -29,7 +29,7 @@ var Game = /** @class */ (function () {
         this.gameObjects.push(gameObject);
     };
     Game.prototype.over = function () {
-        alert("GameOver!");
+        // alert("GameOver!")
         window.location.reload();
         //une fenêtre s'ouvre
     };
@@ -37,7 +37,7 @@ var Game = /** @class */ (function () {
     Game.prototype.loseEarthLife = function () {
         this.earthLives--;
         if (this.earthLives <= 0) {
-            this.over();
+            // this.over();
             console.log("le sol/La Terre meurt !!");
         }
     };
@@ -45,7 +45,7 @@ var Game = /** @class */ (function () {
     Game.prototype.losePlayerLife = function () {
         this.playerLives--;
         if (this.playerLives <= 0) {
-            this.over();
+            // this.over();
             console.log("le player  meurt !!");
         }
     };
@@ -53,7 +53,7 @@ var Game = /** @class */ (function () {
     Game.prototype.loseAlienLife = function () {
         this.nbAliens--;
         if (this.nbAliens <= 0) {
-            this.over();
+            // this.over();
             console.log("l'alien  meurt !!");
         }
     };
@@ -61,20 +61,14 @@ var Game = /** @class */ (function () {
         //sol
         this.sol = new Sol(this); // je pense pas qu'il y ait un intérêt car il y a un sol
         this.instanciate(this.sol);
-        this.draw;
         //LA MUSIQUE
         Music.startMusic();
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-        // J'instancie un GameObject
-        var gameObject = new GameObject(this);
-        // Je le dessine
-        this.draw(gameObject);
         // J'instancie le Player avec new Player(this)
         // Je le dessine avec this.draw
         this.player = new Player(this);
-        this.draw(this.player);
         // Écoute les inputs
         // J'ajoute le player au tableau de GameObject
         this.instanciate(this.player);
@@ -83,8 +77,6 @@ var Game = /** @class */ (function () {
         this.loop();
         // ++ Instanciation de l'alien
         //alien
-        this.alien = new Alien(this);
-        this.draw(this.alien);
         //   const nbAliens = 10; ancien code 
         // for (let i = 0; i < nbAliens; i++) {
         //     aliens.push(new GameObject(alienImg, {
@@ -120,17 +112,25 @@ var Game = /** @class */ (function () {
     Game.prototype.loop = function () {
         var _this = this;
         setInterval(function () {
+            if (Input.getPause()) {
+                // Affichage optionnel "PAUSE"
+                _this.context.fillStyle = "rgba(0,0,0,0.5)";
+                _this.context.fillRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
+                _this.context.fillStyle = "white";
+                _this.context.font = "48px Arial";
+                _this.context.textAlign = "center";
+                _this.context.fillText("PAUSE", _this.CANVAS_WIDTH / 2, _this.CANVAS_HEIGHT / 2);
+                return; // Arrête l'update/draw pour cette frame
+            }
             // console.log("Frame!");
             // J'efface la frame précédente.
             _this.context.clearRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
             _this.context.fillStyle = "#141414";
             _this.context.fillRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
             // Je mets à jour le joueur
-            _this.player.callUpdate();
+            // this.player.callUpdate();
             // Je redessine le joueur à chaque frame
-            _this.draw(_this.player);
-            _this.alien.callUpdate();
-            _this.draw(_this.alien);
+            // this.draw(this.player);
             //La Musique du boss
             // Music.startMusicBoss();
             // Pour chaque gameObject
@@ -139,15 +139,15 @@ var Game = /** @class */ (function () {
             // Pour détecter une collision, il faut savoir si un GameObject est en contact avec un autre.
             // Dans la boucle d'événements, j'ai actuellement une boucle for qui dessine tous les GameObjects.
             //Pour commencer, on peut vérifier si un alien touche le joueur.
-            // this.gameObjects.forEach(go => {
-            //     go.callUpdate();
-            //     this.draw(go);
-            //     //Je dois donc créer une méthode overlap ...
-            //    // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
-            //     if (go instanceof Alien && this.player.overlap(go)) {
-            //         console.log("Alien touche le joueur");
-            //     }
-            // })
+            _this.gameObjects.forEach(function (go) {
+                go.callUpdate();
+                _this.draw(go);
+                //Je dois donc créer une méthode overlap ...
+                // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
+                if (go instanceof Alien && _this.player.overlap(go)) {
+                    console.log("Alien touche le joueur");
+                }
+            });
             _this.gameObjects.forEach(function (go) {
                 go.callUpdate();
                 _this.draw(go);

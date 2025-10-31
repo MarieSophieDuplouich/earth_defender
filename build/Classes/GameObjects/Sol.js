@@ -21,8 +21,8 @@ var Sol = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Sol.prototype.start = function () {
-        //sol le positionner dans le canva
         this.setImage(Assets.getSolImage());
+        this.setWidth(this.getGame().CANVAS_WIDTH);
         this.setPosition({
             x: 0,
             y: this.getGame().CANVAS_HEIGHT - this.getImage().height + 10

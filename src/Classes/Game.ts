@@ -27,13 +27,12 @@ export class Game {
     }
     private player: Player;
     // +
-    private alien: Alien;
     private nbAliens: number = 10;
-    private earthLives : number = 3;
-    private playerLives : number = 1;
+    private earthLives: number = 3;
+    private playerLives: number = 1;
     // private alienLives : number = 1;
     private sol: Sol;
- 
+
 
     // private boss : Boss;
 
@@ -48,38 +47,38 @@ export class Game {
     }
 
     public over(): void {
-        alert("GameOver!")
+        // alert("GameOver!")
         window.location.reload();
         //une fenêtre s'ouvre
     }
     //gestion des vies du sol
-    public loseEarthLife():void{
-    
-     this.earthLives--;
-     if (this.earthLives <= 0) {
-        this.over();
-        console.log("le sol/La Terre meurt !!");
-    }
+    public loseEarthLife(): void {
+
+        this.earthLives--;
+        if (this.earthLives <= 0) {
+            // this.over();
+            console.log("le sol/La Terre meurt !!");
+        }
     }
 
-        //gestion des vies du player
-    public losePlayerLife():void{
-    
-     this.playerLives--;
-     if (this.playerLives <= 0) {
-        this.over();
-        console.log("le player  meurt !!");
-    }
+    //gestion des vies du player
+    public losePlayerLife(): void {
+
+        this.playerLives--;
+        if (this.playerLives <= 0) {
+            // this.over();
+            console.log("le player  meurt !!");
+        }
     }
 
-           //gestion des vies de l'ennemi
-    public loseAlienLife():void{
-    
-     this.nbAliens--;
-     if (this.nbAliens <= 0) {
-        this.over();
-        console.log("l'alien  meurt !!");
-    }
+    //gestion des vies de l'ennemi
+    public loseAlienLife(): void {
+
+        this.nbAliens--;
+        if (this.nbAliens <= 0) {
+            // this.over();
+            console.log("l'alien  meurt !!");
+        }
     }
 
 
@@ -88,7 +87,6 @@ export class Game {
         //sol
         this.sol = new Sol(this); // je pense pas qu'il y ait un intérêt car il y a un sol
         this.instanciate(this.sol);
-        this.draw;
 
 
         //LA MUSIQUE
@@ -99,10 +97,6 @@ export class Game {
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
 
-        // J'instancie un GameObject
-        const gameObject = new GameObject(this);
-        // Je le dessine
-        this.draw(gameObject);
 
 
 
@@ -113,7 +107,6 @@ export class Game {
         // Je le dessine avec this.draw
 
         this.player = new Player(this);
-        this.draw(this.player);
         // Écoute les inputs
         // J'ajoute le player au tableau de GameObject
         this.instanciate(this.player);
@@ -123,8 +116,6 @@ export class Game {
         this.loop();
         // ++ Instanciation de l'alien
         //alien
-        this.alien = new Alien(this);
-        this.draw(this.alien);
 
         //   const nbAliens = 10; ancien code 
         // for (let i = 0; i < nbAliens; i++) {
@@ -178,6 +169,18 @@ export class Game {
 
     private loop() {
         setInterval(() => {
+            if (Input.getPause()) {
+                // Affichage optionnel "PAUSE"
+                this.context.fillStyle = "rgba(0,0,0,0.5)";
+                this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
+                this.context.fillStyle = "white";
+                this.context.font = "48px Arial";
+                this.context.textAlign = "center";
+                this.context.fillText("PAUSE", this.CANVAS_WIDTH / 2, this.CANVAS_HEIGHT / 2);
+                return; // Arrête l'update/draw pour cette frame
+            }
+
+
             // console.log("Frame!");
             // J'efface la frame précédente.
             this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
@@ -186,13 +189,10 @@ export class Game {
 
 
             // Je mets à jour le joueur
-            this.player.callUpdate();
+            // this.player.callUpdate();
 
             // Je redessine le joueur à chaque frame
-            this.draw(this.player);
-
-            this.alien.callUpdate();
-            this.draw(this.alien);
+            // this.draw(this.player);
 
             //La Musique du boss
             // Music.startMusicBoss();
@@ -204,16 +204,16 @@ export class Game {
 
             // Dans la boucle d'événements, j'ai actuellement une boucle for qui dessine tous les GameObjects.
             //Pour commencer, on peut vérifier si un alien touche le joueur.
-            // this.gameObjects.forEach(go => {
-            //     go.callUpdate();
-            //     this.draw(go);
-            //     //Je dois donc créer une méthode overlap ...
-            //    // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
-            //     if (go instanceof Alien && this.player.overlap(go)) {
-            //         console.log("Alien touche le joueur");
-            //     }
+            this.gameObjects.forEach(go => {
+                go.callUpdate();
+                this.draw(go);
+                //Je dois donc créer une méthode overlap ...
+                // Implémentez la méthode GameObject.overlap() qui permet de vérifier si un GameObject en touche un autre.
+                if (go instanceof Alien && this.player.overlap(go)) {
+                    console.log("Alien touche le joueur");
+                }
 
-            // })
+            })
 
             this.gameObjects.forEach(go => {
                 go.callUpdate();
@@ -231,25 +231,25 @@ export class Game {
 
 
 
-        // Affichage des 3 vies de  la Terre ("3 🌍")
-        this.context.fillStyle = "white";
-        this.context.font = "24px Arial";
-        this.context.textAlign = "left";
-       this.context.fillText(`${this.earthLives} 🌍`, 340, 530);
+            // Affichage des 3 vies de  la Terre ("3 🌍")
+            this.context.fillStyle = "white";
+            this.context.font = "24px Arial";
+            this.context.textAlign = "left";
+            this.context.fillText(`${this.earthLives} 🌍`, 340, 530);
 
-       //affichage de la vie du Player
+            //affichage de la vie du Player
 
-       this.context.fillStyle = "white";
-        this.context.font = "24px Arial";
-        this.context.textAlign = "right";
-       this.context.fillText(`${this.playerLives} 🪖⚔️`, 530, 530);
+            this.context.fillStyle = "white";
+            this.context.font = "24px Arial";
+            this.context.textAlign = "right";
+            this.context.fillText(`${this.playerLives} 🪖⚔️`, 530, 530);
 
-       //Affichage vie de l'ennemi
+            //Affichage vie de l'ennemi
 
-       this.context.fillStyle = "white";
-        this.context.font = "24px Arial";
-        this.context.textAlign = "left";
-       this.context.fillText(`${this.nbAliens} 🛸`, 30, 90);
+            this.context.fillStyle = "white";
+            this.context.font = "24px Arial";
+            this.context.textAlign = "left";
+            this.context.fillText(`${this.nbAliens} 🛸`, 30, 90);
 
 
         }, 10); // 1 frame/10ms ---> 100 frames/1000ms ---> 100 frames/1s
@@ -269,6 +269,8 @@ export class Game {
 
     }
 }
+
+
 // Exercice 16 - Détruire un gameObject
 // Supprimez gameObject du tableau de gameObjects à l'appel de Game.destroy() class Game
 

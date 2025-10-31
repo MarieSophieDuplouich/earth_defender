@@ -11,64 +11,66 @@
 // Une méthode static est accessible directement en tant qu'attribut de la classe. Pas besoin donc de l'instancier avec new.
 // Une fois la fonction getter ajoutée, je peux m'en servir dans le constructeur de GameObject.
 
-export class Assets{
-    public static getDefaultImage(){
-        const image : HTMLImageElement = document.querySelector("img#asset_default");
-        if(image == null){
-            throw Error("No assets found");
-        }
-        return image;
-    }
-    
-// Player
-    public static getPlayerImage(){
-        const image : HTMLImageElement = document.querySelector("img#asset_player");
-        if(image == null){
+export class Assets {
+    public static getDefaultImage() {
+        const image: HTMLImageElement = document.querySelector("img#asset_default");
+        if (image == null) {
             throw Error("No assets found");
         }
         return image;
     }
 
+    // Player
+    public static getPlayerImage() {
+        const image: HTMLImageElement = document.querySelector("img#asset_player");
+        if (image == null) {
+            throw Error("No assets found");
+        }
+        return image;
+    }
 
-// Alien
-public static getAlienImage() : HTMLImageElement{
-    const image: HTMLImageElement = document.querySelector("img#asset_alien");
-    if(image == null) throw Error("No alien asset found");
 
-    return image;
-}
-//étoiles
+    // Alien
+    public static getAlienImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img#asset_alien");
+        if (image == null) throw Error("No alien asset found");
 
-public static getStarImage() : HTMLImageElement{
-    const image: HTMLImageElement = document.querySelector("img.star");
-    if(image == null) throw Error("No star asset found");
+        return image;
+    }
+    //étoiles
 
-    return image;
-}
+    public static getStarImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img.star");
+        if (image == null) throw Error("No star asset found");
 
-//Boss
-public static getBossImage() : HTMLImageElement{
-    const image: HTMLImageElement = document.querySelector("img.boss");
-    if(image == null) throw Error("No boss asset found");
+        return image;
+    }
 
-    return image;
-}
+    //Boss
+    public static getBossImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img.boss");
+        if (image == null) throw Error("No boss asset found");
 
-//Sol
-public static getSolImage() : HTMLImageElement{
-    const image: HTMLImageElement = document.querySelector("img.sol");
-    if(image == null) throw Error("No ground asset found");
+        return image;
+    }
 
-    return image;
-}
+    //Sol
+    public static getSolImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img.sol");
 
-//Misiles/laser
-public static getLaserImage() : HTMLImageElement{
-    const image: HTMLImageElement = document.querySelector("img.missile");
-    if(image == null) throw Error("No ground asset found");
+        if (image == null) throw Error("No ground asset found");
 
-    return image;
-}
+        return image;
+    }
+
+
+    //Misiles/laser
+    public static getLaserImage(): HTMLImageElement {
+        const image: HTMLImageElement = document.querySelector("img.missile");
+        if (image == null) throw Error("No ground asset found");
+
+        return image;
+    }
 
 }
 

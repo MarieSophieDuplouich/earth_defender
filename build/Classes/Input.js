@@ -42,6 +42,10 @@ var Input = /** @class */ (function () {
     Input.getIsShooting = function () {
         return Input.isShooting;
     };
+    // la pause
+    Input.getPause = function () {
+        return Input.isPaused;
+    };
     Input.listen = function () {
         window.addEventListener("keydown", function (event) {
             switch (event.key) {
@@ -59,8 +63,8 @@ var Input = /** @class */ (function () {
                 // //touche p pause enfoncée
                 case "p":
                 case "P":
-                    // je mets quoi ici ?
-                    Input.isPaused = true;
+                    Input.isPaused = !Input.isPaused; // toggle
+                    console.log("Pause:", Input.isPaused);
                     break;
                 default:
                     break;
@@ -90,17 +94,13 @@ var Input = /** @class */ (function () {
                 case " ":
                     Input.isShooting = false;
                     break;
-                case "p":
-                case "P":
-                    // je mets quoi ici ?
-                    Input.isPaused = false;
-                    break;
                 default:
                     break;
             }
         });
     };
     Input.axisX = 0;
+    Input.isPaused = false;
     Input.isShooting = false;
     return Input;
 }());

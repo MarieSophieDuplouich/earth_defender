@@ -6,7 +6,7 @@
 
 // // +
 // export class Input{
-    
+
 //     }
 // Puis ajoutez un nouveau type Direction qui peut prendre trois valeurs : 0, 1 ou -1
 // export class Input{
@@ -39,84 +39,90 @@
 
 // /src/Classes/Input.ts
 
-export class Input{
-    private static axisX : Direction = 0;
+export class Input {
+    private static axisX: Direction = 0;
+    private static isPaused = false;
     // +
-    public static getAxisX() : Direction{
+    public static getAxisX(): Direction {
         return this.axisX;
     }
 
-    private static isShooting : boolean = false;
-    
-    public static getIsShooting() : boolean {
+    private static isShooting: boolean = false;
+
+    public static getIsShooting(): boolean {
         return Input.isShooting;
     }
 
-    public static listen(){
-          window.addEventListener("keydown", (event) => {
-        switch (event.key) {
-          
-            case "d":
-            case "D":
-                Input.axisX = 1;
-                break;
-            
-            case "q":
-            case "Q":
-              Input.axisX = -1;
-                break;
-              case " ":
+
+
+    // la pause
+
+    public static getPause(): boolean {
+        return Input.isPaused;
+    }
+
+
+    public static listen() {
+        window.addEventListener("keydown", (event) => {
+            switch (event.key) {
+
+                case "d":
+                case "D":
+                    Input.axisX = 1;
+                    break;
+
+                case "q":
+                case "Q":
+                    Input.axisX = -1;
+                    break;
+                case " ":
                     Input.isShooting = true;
                     break;
                 // //touche p pause enfoncée
 
-                case"p":
-                case"P":
-                 // je mets quoi ici ?
-                 Input.isPaused =true;
-                break;
+                case "p":
+                case "P":
+                    Input.isPaused = !Input.isPaused; // toggle
+                    console.log("Pause:", Input.isPaused);
+                    break;
 
 
-            default:
-                break;
-        }
-    });
+                default:
+                    break;
+            }
+        });
 
         window.addEventListener("keyup", (event) => {
-        switch (event.key) {
-            
-            case "d":
-            case "D":
-            case "q":
-            case "Q":
-                Input.axisX = 0;
-            //   case"p":
-            //     case"P":
-            //      // je mets quoi ici ?
-            //   case " ":
-                // Tirer un missile
-                // missiles.push(new GameObject(
-                //     missileImg,
-                //     {
-                //         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
-                //         y: playerPos.y - missileImg.height
-                //     }
-                // ));
-                // shootMusiquesLaser();
-             
-                break;
+            switch (event.key) {
+
+                case "d":
+                case "D":
+                case "q":
+                case "Q":
+                    Input.axisX = 0;
+                    //   case"p":
+                    //     case"P":
+                    //      // je mets quoi ici ?
+                    //   case " ":
+                    // Tirer un missile
+                    // missiles.push(new GameObject(
+                    //     missileImg,
+                    //     {
+                    //         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
+                    //         y: playerPos.y - missileImg.height
+                    //     }
+                    // ));
+                    // shootMusiquesLaser();
+
+                    break;
                 case " ":
                     Input.isShooting = false;
                     break;
-            case"p":
-                case"P":
-                 // je mets quoi ici ?
-                 Input.isPaused = false;
-                break;
-            default:
-                break;
-        }
-    });
+
+                default:
+                    break;
+            }
+        });
 
     }
 }

@@ -34,6 +34,9 @@ var GameObject = /** @class */ (function () {
     GameObject.prototype.setPosition = function (position) {
         this.position = position;
     };
+    GameObject.prototype.setWidth = function (width) {
+        this.image.width = width;
+    };
     // pourquoi cette méthode est-elle vide ?
     GameObject.prototype.start = function () {
     };

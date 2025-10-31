@@ -80,6 +80,10 @@ export class GameObject {
         this.position = position;
     }
 
+    public setWidth(width : number) : void{
+        this.image.width = width;
+    }
+
     // pourquoi cette méthode est-elle vide ?
     protected start() {
 
