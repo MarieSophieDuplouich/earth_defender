@@ -93,13 +93,11 @@ export class Game {
 
         Music.startMusic();
 
+        //La musique du laser/missile ici ?
+
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-
-
-
-
 
         // J'instancie le Player avec new Player(this)
 
@@ -114,32 +112,13 @@ export class Game {
         Input.listen();
         // Démarre la boucle de jeu
         this.loop();
-        // ++ Instanciation de l'alien
-        //alien
 
-        //   const nbAliens = 10; ancien code 
-        // for (let i = 0; i < nbAliens; i++) {
-        //     aliens.push(new GameObject(alienImg, {
-        //         x: Math.random() * (CANVAS_WIDTH - alienImg.width),
-        //         y: Math.random() * -200
-        //     }));
-        // }
 
 
         for (let i = 0; i < this.nbAliens; i++) {
             this.instanciate(new Alien(this));
         }
 
-        // Fond étoilé ancien code
-        //         for (let i = 0; i < 30; i++) {
-        //             context.drawImage(
-        //                 starImage,
-        //                 Math.random() * CANVAS_WIDTH,
-        //                 Math.random() * CANVAS_HEIGHT,
-        //                 starImage.width,
-        //                 starImage.height
-        //             );
-        //         }
 
         for (let i = 0; i < 100; i++) {
             this.instanciate(new Star(this));
@@ -160,11 +139,6 @@ export class Game {
             gameObject.getImage().height
 
         );
-
-        //         gameObject.addEventListener("click", function (gameObject) {
-        //   console.log("coucou"); // logs the className of my_element
-        //   console.log(gameObject.currentTarget === this); // logs `true`
-        // });
     }
 
     private loop() {
@@ -181,7 +155,7 @@ export class Game {
             }
 
 
-            // console.log("Frame!");
+ 
             // J'efface la frame précédente.
             this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
             this.context.fillStyle = "#141414";
@@ -263,7 +237,6 @@ export class Game {
     }
 
     public destroy(gameObject: GameObject): void {
-        // Codez ici ...
         // Supprimer gameObject du tableau de gameObjects
         this.gameObjects = this.gameObjects.filter(go => go != gameObject);
 

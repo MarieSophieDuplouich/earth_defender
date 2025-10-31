@@ -72,6 +72,15 @@ export class Assets {
         return image;
     }
 
+    // Ici je ne sais pas où mettre l'audio    // quand je tire un missile la musique s'active
+
+       public static getshootMusicsound(): HTMLAudioElement {
+        const audio: HTMLAudioElement = document.querySelector("audio#shoot-music");
+        if (audio == null) throw Error("No laser sound asset found");
+
+        return audio;
+    }
+
 }
 
 

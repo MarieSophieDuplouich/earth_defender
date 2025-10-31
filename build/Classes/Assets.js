@@ -61,6 +61,13 @@ var Assets = /** @class */ (function () {
             throw Error("No ground asset found");
         return image;
     };
+    // Ici je ne sais pas où mettre l'audio    // quand je tire un missile la musique s'active
+    Assets.getshootMusicsound = function () {
+        var audio = document.querySelector("audio#shoot-music");
+        if (audio == null)
+            throw Error("No laser sound asset found");
+        return audio;
+    };
     return Assets;
 }());
 export { Assets };

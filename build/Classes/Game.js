@@ -63,6 +63,7 @@ var Game = /** @class */ (function () {
         this.instanciate(this.sol);
         //LA MUSIQUE
         Music.startMusic();
+        //La musique du laser/missile ici ?
         this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
         this.context.fillStyle = "#141414";
         this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
@@ -75,28 +76,9 @@ var Game = /** @class */ (function () {
         Input.listen();
         // Démarre la boucle de jeu
         this.loop();
-        // ++ Instanciation de l'alien
-        //alien
-        //   const nbAliens = 10; ancien code 
-        // for (let i = 0; i < nbAliens; i++) {
-        //     aliens.push(new GameObject(alienImg, {
-        //         x: Math.random() * (CANVAS_WIDTH - alienImg.width),
-        //         y: Math.random() * -200
-        //     }));
-        // }
         for (var i = 0; i < this.nbAliens; i++) {
             this.instanciate(new Alien(this));
         }
-        // Fond étoilé ancien code
-        //         for (let i = 0; i < 30; i++) {
-        //             context.drawImage(
-        //                 starImage,
-        //                 Math.random() * CANVAS_WIDTH,
-        //                 Math.random() * CANVAS_HEIGHT,
-        //                 starImage.width,
-        //                 starImage.height
-        //             );
-        //         }
         for (var i = 0; i < 100; i++) {
             this.instanciate(new Star(this));
         }
@@ -104,10 +86,6 @@ var Game = /** @class */ (function () {
     //  La fonction draw qui affiche un gameObject
     Game.prototype.draw = function (gameObject) {
         this.context.drawImage(gameObject.getImage(), gameObject.getPosition().x, gameObject.getPosition().y, gameObject.getImage().width, gameObject.getImage().height);
-        //         gameObject.addEventListener("click", function (gameObject) {
-        //   console.log("coucou"); // logs the className of my_element
-        //   console.log(gameObject.currentTarget === this); // logs `true`
-        // });
     };
     Game.prototype.loop = function () {
         var _this = this;
@@ -122,7 +100,6 @@ var Game = /** @class */ (function () {
                 _this.context.fillText("PAUSE", _this.CANVAS_WIDTH / 2, _this.CANVAS_HEIGHT / 2);
                 return; // Arrête l'update/draw pour cette frame
             }
-            // console.log("Frame!");
             // J'efface la frame précédente.
             _this.context.clearRect(0, 0, _this.CANVAS_WIDTH, _this.CANVAS_HEIGHT);
             _this.context.fillStyle = "#141414";
@@ -182,7 +159,6 @@ var Game = /** @class */ (function () {
         return this.player;
     };
     Game.prototype.destroy = function (gameObject) {
-        // Codez ici ...
         // Supprimer gameObject du tableau de gameObjects
         this.gameObjects = this.gameObjects.filter(function (go) { return go != gameObject; });
     };

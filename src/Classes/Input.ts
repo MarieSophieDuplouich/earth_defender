@@ -49,6 +49,8 @@ export class Input {
 
     private static isShooting: boolean = false;
 
+    //missile 
+
     public static getIsShooting(): boolean {
         return Input.isShooting;
     }
@@ -56,9 +58,13 @@ export class Input {
 
 
     // la pause
-
     public static getPause(): boolean {
         return Input.isPaused;
+    }
+
+
+    public static shootMusiques() {
+        return Input.laserMusic;
     }
 
 
@@ -75,10 +81,18 @@ export class Input {
                 case "Q":
                     Input.axisX = -1;
                     break;
+
+                //barre d'espace lance un missile
                 case " ":
-                    Input.isShooting = true;
+                    Input.isShooting = !Input.isShooting;
+                     Input.laserMusic = !Input.laserMusic;
+
+                    this.currentTime = 0;
+                    this.volume = 0.5;
+                    this.play();
+                    console.log("je tire");
                     break;
-                // //touche p pause enfoncée
+                //touche p pause enfoncée
 
                 case "p":
                 case "P":
@@ -100,23 +114,6 @@ export class Input {
                 case "q":
                 case "Q":
                     Input.axisX = 0;
-                    //   case"p":
-                    //     case"P":
-                    //      // je mets quoi ici ?
-                    //   case " ":
-                    // Tirer un missile
-                    // missiles.push(new GameObject(
-                    //     missileImg,
-                    //     {
-                    //         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
-                    //         y: playerPos.y - missileImg.height
-                    //     }
-                    // ));
-                    // shootMusiquesLaser();
-
-                    break;
-                case " ":
-                    Input.isShooting = false;
                     break;
 
                 default:
@@ -130,87 +127,5 @@ export type Direction = 0 | 1 | -1;
 
 
 
-//ajouter P comme pause
-//
-//     const missileImg: HTMLImageElement = document.querySelector("img.missile");
-//     const missiles: GameObject[] = [];
 
-//varaibale du jeu 
-
-//     const missiles: GameObject[] = [];
-
-
-
-//         // Missiles
-//         for (let i = missiles.length - 1; i >= 0; i--) {
-//             const missile = missiles[i];
-//             missile.position.y -= 8;
-//             context.drawImage(
-//                 missile.image,
-//                 missile.position.x,
-//                 missile.position.y,
-//                 missile.image.width,
-//                 missile.image.height
-//             );
-
-//             // Supprimer les missiles sortis du haut
-//             if (missile.position.y + missile.image.height < 0) {
-//                 missiles.splice(i, 1);
-//             }
-
-
-//         }
-
-
-//     // --- Gestion des touches --- /
-
-
-//     // quand je tire un missile la musique s'active
-
-//     const shootMusicsound = document.getElementById('shoot-music') as HTMLAudioElement;
-//     function shootMusiques() {
-//         if (shootMusicsound.paused) {
-//             shootMusicsound.currentTime = 0;
-//             shootMusicsound.volume = 0.5;
-//             shootMusicsound.play();
-//         } else {
-
-//             shootMusicsound.currentTime = 0;
-//         }
-
-//         document.addEventListener('keydown', shootMusiques);
-//     }
-
-//     document.addEventListener("keydown", (event) => {
-//         if (gameOver) return; // Bloque le contrôle après game over
-
-//         switch (event.key) {
-//             case "d":
-//             case "D":
-//                 direction = 1;
-//                 break;
-//             case "q":
-//             case "Q":
-//                 direction = -1;
-//                 break;
-//             case " ":
-//                 // Tirer un missile
-//                 missiles.push(new GameObject(
-//                     missileImg,
-//                     {
-//                         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
-//                         y: playerPos.y - missileImg.height
-//                     }
-//                 ));
-//                 shootMusiques();
-//                 break;
-//         }
-//     });
-
-//     document.addEventListener("keyup", (event) => {
-//         if (["d", "D", "q", "Q"].includes(event.key)) {
-//             direction = 0;
-//         }
-//     });
-// }
 
