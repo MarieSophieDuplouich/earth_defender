@@ -40,6 +40,10 @@ var GameObject = /** @class */ (function () {
     // pourquoi cette méthode est-elle vide ?
     GameObject.prototype.start = function () {
     };
+    // Getter d'image et de position Boss
+    GameObject.prototype.getBoss = function () {
+        return this.image;
+    };
     GameObject.prototype.update = function () { };
     GameObject.prototype.callUpdate = function () {
         this.update();

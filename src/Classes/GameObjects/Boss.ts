@@ -1,80 +1,67 @@
-// choses restantes à faire
-//Mort du joueur	Le joueur meurt si un alien le touche.	Le jeu recommence.
-//Tir du joueur	Le joueur tire des missiles qui détruisent un alien au contact	Les missiles vont tout droit vers le haut de l'écran. 
-// La touche espace tire un missile. Le joueur peut tirer à une cadence maximale de 200 ms.
-//Bonus SON Joueur	Émettre un son au tir du joueur.
+import { GameObject } from "./GameObject.js";
+import { Assets } from "../Assets.js";
+import { Player } from "./Player.js";
+import { Laser } from "./Laser.js";
+
+export class Boss extends GameObject {
+    private speed: number = 0.5;
+
+    protected start(): void {
+        // Définissez l'image du boss
+        this.setImage(Assets.getBossImage());
+        // Faite le apparaitre à une position aléatoire dans le canvas
+        this.setPosition({
+            x: Math.random() * this.getGame().CANVAS_WIDTH,
+            y: Math.random() * this.getGame().CANVAS_HEIGHT / 4 - 50,
+        });
+    }
+
+
+    protected update(): void {
+        // Faites avancer le boss vers le bas du Canvas
+        this.setPosition({
+            x: this.getPosition().x,
+            y: this.getPosition().y + this.speed
+        });
+
+        // si le boss touche la Terre, la Terre perd un point de vie
+        if (this.getPosition().y + this.getImage().height >= this.getGame().CANVAS_HEIGHT - 50) {
+            this.getGame().loseEarthLife();
+
+            // le boss repart du haut (il reste visible)
+            this.setPosition({
+                x: Math.random() * (this.getGame().CANVAS_WIDTH - this.getImage().width),
+                y: -this.getImage().height
+            });
+        }
+    }
+
+
+    protected collide(other: GameObject): void {
+
+        // Collision boss ↔ player
+        if (other instanceof Player) {
+            console.log("Miam Miam !");
+            this.getGame().over();
+        }
+
+        // Collision missile ↔ boss
+        if (other instanceof Laser) {
+            // Supprimer uniquement le missile
+            this.getGame().destroy(other);
+
+            // Les vies du boss sont gérées ailleurs
+        }
+    }
+
+
+}
 
 
 
 
-//             // Collision alien ↔ sol
-//             if (alien.position.y + alien.image.height >= ground.position.y) {
-//                 earthLives = Math.max(0, earthLives - 1);
-//                 alien.position.y = -alien.image.height;
-//                 alien.position.x = Math.random() * (CANVAS_WIDTH - alien.image.width);
-//             }
-
-//             // Collision missile ↔ alien
-//             for (let j = missiles.length - 1; j >= 0; j--) {
-//                 const missile = missiles[j];
-//                 if (isColliding(missile, alien)) {
-//                     // Supprimer le missile et l’alien touché
-//                     missiles.splice(j, 1);
-//                     aliens.splice(i, 1);
-//                     // Recréer un nouvel alien
-//                     aliens.push(new GameObject(alienImg, {
-//                         x: Math.random() * (CANVAS_WIDTH - alienImg.width),
-//                         y: -alienImg.height
-//                     }));
-//                     break;
-//                 }
-//             }
-//         }
 
 
 
 
-////////////////////
 
-
-//     // quand je tire un missile la musique s'active
-
-//     const shootMusicsound = document.getElementById('shoot-music') as HTMLAudioElement;
-//     function shootMusiques() {
-//         if (shootMusicsound.paused) {
-//             shootMusicsound.currentTime = 0;
-//             shootMusicsound.volume = 0.5;
-//             shootMusicsound.play();
-//         } else {
-
-//             shootMusicsound.currentTime = 0;
-//         }
-
-//         document.addEventListener('keydown', shootMusiques);
-//     }
-
-//     document.addEventListener("keydown", (event) => {
-//         if (gameOver) return; // Bloque le contrôle après game over
-
-//         switch (event.key) {
-//             case "d":
-//             case "D":
-//                 direction = 1;
-//                 break;
-//             case "q":
-//             case "Q":
-//                 direction = -1;
-//                 break;
-//             case " ":
-//                 // Tirer un missile
-//                 missiles.push(new GameObject(
-//                     missileImg,
-//                     {
-//                         x: playerPos.x + playerImg.width / 2 - missileImg.width / 2,
-//                         y: playerPos.y - missileImg.height
-//                     }
-//                 ));
-//                 shootMusiques();
-//                 break;
-//         }
-//     });

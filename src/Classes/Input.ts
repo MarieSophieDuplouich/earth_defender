@@ -67,7 +67,7 @@ export class Input {
     //     return Input.laserMusic;
     // }
 
-     private static laserMusic: HTMLAudioElement = Assets.getshootMusicsound();
+    private static laserMusic: HTMLAudioElement = Assets.getshootMusicsound();
     // public static getshootMusiques(): boolean {
     //     return Input.laserMusic;
     // }
@@ -89,13 +89,10 @@ export class Input {
 
                 //barre d'espace lance un missile
                 case " ":
-                    Input.isShooting = !Input.isShooting;
-                    // Input.laserMusic = !Input.laserMusic;
+                    Input.isShooting = true;
+                    console.log("je tire");
 
-                    // this.laserMusic.currentTime = 0;
-                    // this.laserMusic.volume = 0.5;
-                    // this.laserMusic.play();
-                      this.laserMusic.currentTime = 0;
+                    this.laserMusic.currentTime = 0;
                     this.laserMusic.volume = 0.5;
                     this.laserMusic.play();
 
@@ -118,7 +115,9 @@ export class Input {
 
         window.addEventListener("keyup", (event) => {
             switch (event.key) {
-
+                case " ":
+                    Input.isShooting = false;
+                    break;
                 case "d":
                 case "D":
                 case "q":

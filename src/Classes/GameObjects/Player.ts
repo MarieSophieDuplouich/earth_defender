@@ -1,10 +1,11 @@
 import { Assets } from "../Assets.js";
 import { GameObject } from "./GameObject.js";
 import { Input } from "../Input.js";
+import { Laser } from "./Laser.js";
 
 
 export class Player extends GameObject {
-      private speed : number = 10;
+    private speed: number = 10;
 
     protected start(): void {
         this.setImage(Assets.getPlayerImage());
@@ -15,17 +16,30 @@ export class Player extends GameObject {
 
     }
 
-    
- protected update(): void {
 
-    if (Input.getPause()) return;
-    if (Input.getIsShooting()) return;
-    // if(Input.getshootMusiques())return;
+    protected update(): void {
 
+        if (Input.getPause()) return;
+        // if (Input.getIsShooting()) return;
+        // if(Input.getshootMusiques())return;
+        if (Input.getIsShooting()) {
+            this.getGame().instanciate(new Laser(this.getGame()));
+            Input["isShooting"] = false; // empêche le spam
+        }
+        let newX = this.getPosition().x + this.speed * Input.getAxisX();
 
+        newX = Math.max(
+            0,
+            Math.min(
+                this.getGame().CANVAS_WIDTH - this.getImage().width,
+                newX
+            )
+        );
         this.setPosition({
-            x : this.getPosition().x += this.speed*Input.getAxisX(),
-            y : this.getPosition().y
+            // x : this.getPosition().x += this.speed*Input.getAxisX(),
+            // y : this.getPosition().y
+            x: newX,
+            y: this.getPosition().y
         })
 
     }

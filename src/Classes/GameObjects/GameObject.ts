@@ -87,9 +87,15 @@ export class GameObject {
     // pourquoi cette méthode est-elle vide ?
     protected start() {
 
-
-
     }
+
+     // Getter d'image et de position Boss
+    public getBoss(): HTMLImageElement {
+        return this.image;
+    }
+
+
+
 
     protected update() { }
     public callUpdate() {

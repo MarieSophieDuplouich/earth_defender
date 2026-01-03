@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 import { Assets } from "../Assets.js";
 import { GameObject } from "./GameObject.js";
 import { Input } from "../Input.js";
+import { Laser } from "./Laser.js";
 var Player = /** @class */ (function (_super) {
     __extends(Player, _super);
     function Player() {
@@ -33,11 +34,18 @@ var Player = /** @class */ (function (_super) {
     Player.prototype.update = function () {
         if (Input.getPause())
             return;
-        if (Input.getIsShooting())
-            return;
+        // if (Input.getIsShooting()) return;
         // if(Input.getshootMusiques())return;
+        if (Input.getIsShooting()) {
+            this.getGame().instanciate(new Laser(this.getGame()));
+            Input["isShooting"] = false; // empêche le spam
+        }
+        var newX = this.getPosition().x + this.speed * Input.getAxisX();
+        newX = Math.max(0, Math.min(this.getGame().CANVAS_WIDTH - this.getImage().width, newX));
         this.setPosition({
-            x: this.getPosition().x += this.speed * Input.getAxisX(),
+            // x : this.getPosition().x += this.speed*Input.getAxisX(),
+            // y : this.getPosition().y
+            x: newX,
             y: this.getPosition().y
         });
     };

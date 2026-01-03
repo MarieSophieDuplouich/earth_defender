@@ -65,11 +65,8 @@ var Input = /** @class */ (function () {
                     break;
                 //barre d'espace lance un missile
                 case " ":
-                    Input.isShooting = !Input.isShooting;
-                    // Input.laserMusic = !Input.laserMusic;
-                    // this.laserMusic.currentTime = 0;
-                    // this.laserMusic.volume = 0.5;
-                    // this.laserMusic.play();
+                    Input.isShooting = true;
+                    console.log("je tire");
                     _this.laserMusic.currentTime = 0;
                     _this.laserMusic.volume = 0.5;
                     _this.laserMusic.play();
@@ -87,6 +84,9 @@ var Input = /** @class */ (function () {
         });
         window.addEventListener("keyup", function (event) {
             switch (event.key) {
+                case " ":
+                    Input.isShooting = false;
+                    break;
                 case "d":
                 case "D":
                 case "q":

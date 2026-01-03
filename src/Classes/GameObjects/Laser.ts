@@ -1,6 +1,6 @@
 import { GameObject } from "./GameObject.js";
 import { Assets } from "../Assets.js";
-import { Alien } from "./Alien";
+import { Alien } from "./Alien.js";
 import { Player } from "./Player.js";
 
 export class Laser extends GameObject {

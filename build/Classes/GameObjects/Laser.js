@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import { GameObject } from "./GameObject.js";
 import { Assets } from "../Assets.js";
-import { Alien } from "./Alien";
+import { Alien } from "./Alien.js";
 var Laser = /** @class */ (function (_super) {
     __extends(Laser, _super);
     function Laser() {
