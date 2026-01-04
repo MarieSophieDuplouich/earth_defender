@@ -369,7 +369,7 @@ var Game = /** @class */ (function () {
     };
     Game.prototype.destroy = function (gameObject) {
         if (gameObject instanceof Alien) {
-            console.log("🛸 Alien détruit via destroy()");
+            console.log("Alien détruit via destroy()");
         }
         this.gameObjects = this.gameObjects.filter(function (go) { return go !== gameObject; });
     };
