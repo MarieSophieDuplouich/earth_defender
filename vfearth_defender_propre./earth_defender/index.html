@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth Defender</title>
+    <link rel="icon" href="./public/images/Player.png">
+    <link rel="stylesheet" href="./public/style.css">
+</head>
+
+<body>
+    <canvas id="jeu" aria-label="Earth Defender : défends la Terre contre les aliens"></canvas>
+    <p class="aide">Q / D (ou ← →) : se déplacer · Espace : tirer · P : pause</p>
+    <noscript>Earth Defender a besoin de JavaScript pour fonctionner.</noscript>
+
+    <!-- Images (cachées, utilisées par le canvas) -->
+    <img src="./public/images/DefaultGameObject.png" id="asset_default" alt="" hidden>
+    <img src="./public/images/Player.png" id="asset_player" alt="" hidden>
+    <img src="./public/images/Alien666.png" id="asset_alien" alt="" hidden>
+    <img src="./public/images/Boss.png" id="asset_boss" alt="" hidden>
+    <img src="./public/images/Star.png" id="asset_star" alt="" hidden>
+    <img src="./public/images/Laser.png" id="asset_laser" alt="" hidden>
+    <img src="./public/images/BossLaser.png" id="asset_boss_laser" alt="" hidden>
+    <img src="./public/images/Earth.png" id="asset_sol" alt="" hidden>
+
+    <!-- Sons -->
+    <audio id="musique-niveau1" src="./public/audio/musique-niveau1.mp3" loop preload="auto"></audio>
+    <audio id="musique-boss" src="./public/audio/musique-boss.mp3" loop preload="auto"></audio>
+    <audio id="son-laser" src="./public/audio/son-laser.mp3" preload="auto"></audio>
+
+    <script type="module" src="./build/script.js"></script>
+</body>
+
+</html>
